@@ -1,0 +1,767 @@
+{
+  "name": "projects/902191593306/locations/us-west1/pipelineJobs/spaceflights-20230417084417",
+  "displayName": "spaceflights-20230417084417",
+  "createTime": "2023-04-17T08:44:17.313964Z",
+  "startTime": "2023-04-17T08:45:35.587807Z",
+  "endTime": "2023-04-17T08:56:55.064191Z",
+  "updateTime": "2023-04-17T08:56:55.064191Z",
+  "pipelineSpec": {
+    "deploymentConfig": {
+      "@type": "type.googleapis.com/ml_pipelines.PipelineDeploymentConfig",
+      "executors": {
+        "exec-create-model-input-table-node": {
+          "container": {
+            "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+            "command": [
+              "/bin/bash",
+              "-c"
+            ],
+            "args": [
+              "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"create_model_input_table_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+            ],
+            "resources": {
+              "cpuLimit": 1,
+              "memoryLimit": 2.147483648
+            }
+          }
+        },
+        "exec-evaluate-model-node": {
+          "container": {
+            "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+            "command": [
+              "/bin/bash",
+              "-c"
+            ],
+            "args": [
+              "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"evaluate_model_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+            ],
+            "resources": {
+              "cpuLimit": 1,
+              "memoryLimit": 2.147483648
+            }
+          }
+        },
+        "exec-preprocess-companies-node": {
+          "container": {
+            "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+            "command": [
+              "/bin/bash",
+              "-c"
+            ],
+            "args": [
+              "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"preprocess_companies_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+            ],
+            "resources": {
+              "cpuLimit": 1,
+              "memoryLimit": 2.147483648
+            }
+          }
+        },
+        "exec-preprocess-shuttles-node": {
+          "container": {
+            "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+            "command": [
+              "/bin/bash",
+              "-c"
+            ],
+            "args": [
+              "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"preprocess_shuttles_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+            ],
+            "resources": {
+              "cpuLimit": 1,
+              "memoryLimit": 2.147483648
+            }
+          }
+        },
+        "exec-split-data-node": {
+          "container": {
+            "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+            "command": [
+              "/bin/bash",
+              "-c"
+            ],
+            "args": [
+              "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"split_data_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+            ],
+            "resources": {
+              "cpuLimit": 1,
+              "memoryLimit": 2.147483648
+            }
+          }
+        },
+        "exec-train-model-node": {
+          "container": {
+            "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+            "command": [
+              "/bin/bash",
+              "-c"
+            ],
+            "args": [
+              "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"train_model_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+            ],
+            "resources": {
+              "cpuLimit": 1,
+              "memoryLimit": 2.147483648
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "comp-create-model-input-table-node": {
+        "executorLabel": "exec-create-model-input-table-node"
+      },
+      "comp-evaluate-model-node": {
+        "executorLabel": "exec-evaluate-model-node"
+      },
+      "comp-preprocess-companies-node": {
+        "executorLabel": "exec-preprocess-companies-node"
+      },
+      "comp-preprocess-shuttles-node": {
+        "executorLabel": "exec-preprocess-shuttles-node"
+      },
+      "comp-split-data-node": {
+        "executorLabel": "exec-split-data-node"
+      },
+      "comp-train-model-node": {
+        "executorLabel": "exec-train-model-node"
+      }
+    },
+    "schemaVersion": "2.0.0",
+    "root": {
+      "dag": {
+        "tasks": {
+          "create-model-input-table-node": {
+            "taskInfo": {
+              "name": "create-model-input-table-node"
+            },
+            "dependentTasks": [
+              "preprocess-companies-node",
+              "preprocess-shuttles-node"
+            ],
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-create-model-input-table-node"
+            }
+          },
+          "evaluate-model-node": {
+            "taskInfo": {
+              "name": "evaluate-model-node"
+            },
+            "dependentTasks": [
+              "split-data-node",
+              "train-model-node"
+            ],
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-evaluate-model-node"
+            }
+          },
+          "preprocess-companies-node": {
+            "taskInfo": {
+              "name": "preprocess-companies-node"
+            },
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-preprocess-companies-node"
+            }
+          },
+          "preprocess-shuttles-node": {
+            "taskInfo": {
+              "name": "preprocess-shuttles-node"
+            },
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-preprocess-shuttles-node"
+            }
+          },
+          "split-data-node": {
+            "taskInfo": {
+              "name": "split-data-node"
+            },
+            "dependentTasks": [
+              "create-model-input-table-node"
+            ],
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-split-data-node"
+            }
+          },
+          "train-model-node": {
+            "taskInfo": {
+              "name": "train-model-node"
+            },
+            "dependentTasks": [
+              "split-data-node"
+            ],
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-train-model-node"
+            }
+          }
+        }
+      }
+    },
+    "sdkVersion": "kfp-1.8.20",
+    "pipelineInfo": {
+      "name": "spaceflights"
+    },
+    "deploymentSpec": {
+      "executors": {
+        "exec-create-model-input-table-node": {
+          "container": {
+            "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+            "command": [
+              "/bin/bash",
+              "-c"
+            ],
+            "args": [
+              "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"create_model_input_table_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+            ],
+            "resources": {
+              "cpuLimit": 1,
+              "memoryLimit": 2.147483648
+            }
+          }
+        },
+        "exec-evaluate-model-node": {
+          "container": {
+            "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+            "command": [
+              "/bin/bash",
+              "-c"
+            ],
+            "args": [
+              "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"evaluate_model_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+            ],
+            "resources": {
+              "cpuLimit": 1,
+              "memoryLimit": 2.147483648
+            }
+          }
+        },
+        "exec-preprocess-companies-node": {
+          "container": {
+            "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+            "command": [
+              "/bin/bash",
+              "-c"
+            ],
+            "args": [
+              "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"preprocess_companies_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+            ],
+            "resources": {
+              "cpuLimit": 1,
+              "memoryLimit": 2.147483648
+            }
+          }
+        },
+        "exec-preprocess-shuttles-node": {
+          "container": {
+            "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+            "command": [
+              "/bin/bash",
+              "-c"
+            ],
+            "args": [
+              "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"preprocess_shuttles_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+            ],
+            "resources": {
+              "cpuLimit": 1,
+              "memoryLimit": 2.147483648
+            }
+          }
+        },
+        "exec-split-data-node": {
+          "container": {
+            "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+            "command": [
+              "/bin/bash",
+              "-c"
+            ],
+            "args": [
+              "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"split_data_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+            ],
+            "resources": {
+              "cpuLimit": 1,
+              "memoryLimit": 2.147483648
+            }
+          }
+        },
+        "exec-train-model-node": {
+          "container": {
+            "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+            "command": [
+              "/bin/bash",
+              "-c"
+            ],
+            "args": [
+              "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"train_model_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+            ],
+            "resources": {
+              "cpuLimit": 1,
+              "memoryLimit": 2.147483648
+            }
+          }
+        }
+      }
+    }
+  },
+  "state": "PIPELINE_STATE_SUCCEEDED",
+  "jobDetail": {
+    "pipelineContext": {
+      "name": "projects/902191593306/locations/us-west1/metadataStores/default/contexts/spaceflights",
+      "displayName": "spaceflights",
+      "instanceSchemaTitle": "system.Pipeline",
+      "etag": "1681721135714",
+      "createTime": "2023-04-17T08:45:35.714Z",
+      "updateTime": "2023-04-17T08:45:35.714Z",
+      "schemaTitle": "system.Pipeline",
+      "schemaVersion": "0.0.1",
+      "metadata": {}
+    },
+    "pipelineRunContext": {
+      "name": "projects/902191593306/locations/us-west1/metadataStores/default/contexts/spaceflights-20230417084417",
+      "displayName": "spaceflights-20230417084417",
+      "instanceSchemaTitle": "system.PipelineRun",
+      "etag": "1681721135911",
+      "createTime": "2023-04-17T08:45:35.911Z",
+      "updateTime": "2023-04-17T08:45:35.911Z",
+      "parentContexts": [
+        "projects/902191593306/locations/us-west1/metadataStores/default/contexts/spaceflights"
+      ],
+      "schemaTitle": "system.PipelineRun",
+      "schemaVersion": "0.0.1",
+      "metadata": {}
+    },
+    "taskDetails": [
+      {
+        "taskId": "-1743486792071380992",
+        "taskName": "spaceflights-20230417084417",
+        "createTime": "2023-04-17T08:45:35.587807Z",
+        "startTime": "2023-04-17T08:45:36.384415Z",
+        "endTime": "2023-04-17T08:56:55.046230Z",
+        "executorDetail": {},
+        "state": "SUCCEEDED",
+        "execution": {
+          "name": "projects/902191593306/locations/us-west1/metadataStores/default/executions/8884357589702467656",
+          "displayName": "spaceflights-20230417084417",
+          "instanceSchemaTitle": "system.Run",
+          "state": "COMPLETE",
+          "etag": "1681721815011",
+          "createTime": "2023-04-17T08:45:36.222Z",
+          "updateTime": "2023-04-17T08:56:55.011Z",
+          "schemaTitle": "system.Run",
+          "schemaVersion": "0.0.1",
+          "metadata": {}
+        },
+        "pipelineTaskStatus": [
+          {
+            "updateTime": "2023-04-17T08:56:54.847027882Z",
+            "state": "SUCCEEDED"
+          }
+        ]
+      },
+      {
+        "taskId": "-8697044616731426816",
+        "taskName": "evaluate-model-node",
+        "createTime": "2023-04-17T08:45:36.384415Z",
+        "startTime": "2023-04-17T08:56:03.015774Z",
+        "endTime": "2023-04-17T08:56:54.796654Z",
+        "executorDetail": {
+          "containerDetail": {
+            "mainJob": "projects/902191593306/locations/us-west1/customJobs/5876891849485975552"
+          }
+        },
+        "state": "SUCCEEDED",
+        "execution": {
+          "name": "projects/902191593306/locations/us-west1/metadataStores/default/executions/16527041436439943084",
+          "displayName": "evaluate-model-node",
+          "instanceSchemaTitle": "system.ContainerExecution",
+          "state": "COMPLETE",
+          "etag": "1681721814765",
+          "createTime": "2023-04-17T08:56:02.714Z",
+          "updateTime": "2023-04-17T08:56:54.765Z",
+          "schemaTitle": "system.ContainerExecution",
+          "schemaVersion": "0.0.1",
+          "metadata": {}
+        },
+        "parentTaskId": "-1743486792071380992",
+        "pipelineTaskStatus": [
+          {
+            "updateTime": "2023-04-17T08:56:54.618154611Z",
+            "state": "SUCCEEDED"
+          }
+        ]
+      },
+      {
+        "taskId": "-6886597566528487424",
+        "taskName": "train-model-node",
+        "createTime": "2023-04-17T08:45:36.384415Z",
+        "startTime": "2023-04-17T08:55:10.773037Z",
+        "endTime": "2023-04-17T08:56:02.586146Z",
+        "executorDetail": {
+          "containerDetail": {
+            "mainJob": "projects/902191593306/locations/us-west1/customJobs/6572697991914717184"
+          }
+        },
+        "state": "SUCCEEDED",
+        "execution": {
+          "name": "projects/902191593306/locations/us-west1/metadataStores/default/executions/11095325106036932007",
+          "displayName": "train-model-node",
+          "instanceSchemaTitle": "system.ContainerExecution",
+          "state": "COMPLETE",
+          "etag": "1681721762550",
+          "createTime": "2023-04-17T08:55:10.495Z",
+          "updateTime": "2023-04-17T08:56:02.550Z",
+          "schemaTitle": "system.ContainerExecution",
+          "schemaVersion": "0.0.1",
+          "metadata": {}
+        },
+        "parentTaskId": "-1743486792071380992",
+        "pipelineTaskStatus": [
+          {
+            "updateTime": "2023-04-17T08:56:02.428259376Z",
+            "state": "SUCCEEDED"
+          }
+        ]
+      },
+      {
+        "taskId": "-4085358598304038912",
+        "taskName": "preprocess-shuttles-node",
+        "createTime": "2023-04-17T08:45:36.384415Z",
+        "startTime": "2023-04-17T08:45:36.838543Z",
+        "endTime": "2023-04-17T08:48:10.593456Z",
+        "executorDetail": {
+          "containerDetail": {
+            "mainJob": "projects/902191593306/locations/us-west1/customJobs/6088561031972388864"
+          }
+        },
+        "state": "SUCCEEDED",
+        "execution": {
+          "name": "projects/902191593306/locations/us-west1/metadataStores/default/executions/8539449289558533298",
+          "displayName": "preprocess-shuttles-node",
+          "instanceSchemaTitle": "system.ContainerExecution",
+          "state": "COMPLETE",
+          "etag": "1681721290560",
+          "createTime": "2023-04-17T08:45:36.523Z",
+          "updateTime": "2023-04-17T08:48:10.560Z",
+          "schemaTitle": "system.ContainerExecution",
+          "schemaVersion": "0.0.1",
+          "metadata": {}
+        },
+        "parentTaskId": "-1743486792071380992",
+        "pipelineTaskStatus": [
+          {
+            "updateTime": "2023-04-17T08:48:10.394978711Z",
+            "state": "SUCCEEDED"
+          }
+        ]
+      },
+      {
+        "taskId": "526327420123348992",
+        "taskName": "create-model-input-table-node",
+        "createTime": "2023-04-17T08:45:36.384415Z",
+        "startTime": "2023-04-17T08:48:10.942553Z",
+        "endTime": "2023-04-17T08:50:24.126826Z",
+        "executorDetail": {
+          "containerDetail": {
+            "mainJob": "projects/902191593306/locations/us-west1/customJobs/5368829516523241472"
+          }
+        },
+        "state": "SUCCEEDED",
+        "execution": {
+          "name": "projects/902191593306/locations/us-west1/metadataStores/default/executions/1362150886749062909",
+          "displayName": "create-model-input-table-node",
+          "instanceSchemaTitle": "system.ContainerExecution",
+          "state": "COMPLETE",
+          "etag": "1681721424092",
+          "createTime": "2023-04-17T08:48:10.676Z",
+          "updateTime": "2023-04-17T08:50:24.092Z",
+          "schemaTitle": "system.ContainerExecution",
+          "schemaVersion": "0.0.1",
+          "metadata": {}
+        },
+        "parentTaskId": "-1743486792071380992",
+        "pipelineTaskStatus": [
+          {
+            "updateTime": "2023-04-17T08:50:23.928098633Z",
+            "state": "SUCCEEDED"
+          }
+        ]
+      },
+      {
+        "taskId": "2832170429337042944",
+        "taskName": "split-data-node",
+        "createTime": "2023-04-17T08:45:36.384415Z",
+        "startTime": "2023-04-17T08:50:24.533498Z",
+        "endTime": "2023-04-17T08:55:10.337557Z",
+        "executorDetail": {
+          "containerDetail": {
+            "mainJob": "projects/902191593306/locations/us-west1/customJobs/7286518532852940800"
+          }
+        },
+        "state": "SUCCEEDED",
+        "execution": {
+          "name": "projects/902191593306/locations/us-west1/metadataStores/default/executions/1799361435094641358",
+          "displayName": "split-data-node",
+          "instanceSchemaTitle": "system.ContainerExecution",
+          "state": "COMPLETE",
+          "etag": "1681721710309",
+          "createTime": "2023-04-17T08:50:24.261Z",
+          "updateTime": "2023-04-17T08:55:10.309Z",
+          "schemaTitle": "system.ContainerExecution",
+          "schemaVersion": "0.0.1",
+          "metadata": {}
+        },
+        "parentTaskId": "-1743486792071380992",
+        "pipelineTaskStatus": [
+          {
+            "updateTime": "2023-04-17T08:55:10.152828967Z",
+            "state": "SUCCEEDED"
+          }
+        ]
+      },
+      {
+        "taskId": "5138013438550736896",
+        "taskName": "preprocess-companies-node",
+        "createTime": "2023-04-17T08:45:36.384415Z",
+        "startTime": "2023-04-17T08:45:36.870020Z",
+        "endTime": "2023-04-17T08:47:50.305917Z",
+        "executorDetail": {
+          "containerDetail": {
+            "mainJob": "projects/902191593306/locations/us-west1/customJobs/1139105041492213760"
+          }
+        },
+        "state": "SUCCEEDED",
+        "execution": {
+          "name": "projects/902191593306/locations/us-west1/metadataStores/default/executions/6839604431061234461",
+          "displayName": "preprocess-companies-node",
+          "instanceSchemaTitle": "system.ContainerExecution",
+          "state": "COMPLETE",
+          "etag": "1681721270269",
+          "createTime": "2023-04-17T08:45:36.543Z",
+          "updateTime": "2023-04-17T08:47:50.269Z",
+          "schemaTitle": "system.ContainerExecution",
+          "schemaVersion": "0.0.1",
+          "metadata": {}
+        },
+        "parentTaskId": "-1743486792071380992",
+        "pipelineTaskStatus": [
+          {
+            "updateTime": "2023-04-17T08:47:50.059992002Z",
+            "state": "SUCCEEDED"
+          }
+        ]
+      }
+    ]
+  },
+  "labels": {
+    "vertex-ai-pipelines-run-billing-id": "2722557916140797952"
+  },
+  "runtimeConfig": {
+    "gcsOutputDirectory": "gs://demo-kedro-vertexai-spaceflights/vertexai"
+  },
+  "uiPipelineSpec": {
+    "pipelineInfo": {
+      "name": "spaceflights"
+    },
+    "sdkVersion": "kfp-1.8.20",
+    "schemaVersion": "2.0.0",
+    "components": {
+      "comp-create-model-input-table-node": {
+        "executorLabel": "exec-create-model-input-table-node"
+      },
+      "comp-evaluate-model-node": {
+        "executorLabel": "exec-evaluate-model-node"
+      },
+      "comp-preprocess-companies-node": {
+        "executorLabel": "exec-preprocess-companies-node"
+      },
+      "comp-preprocess-shuttles-node": {
+        "executorLabel": "exec-preprocess-shuttles-node"
+      },
+      "comp-split-data-node": {
+        "executorLabel": "exec-split-data-node"
+      },
+      "comp-train-model-node": {
+        "executorLabel": "exec-train-model-node"
+      }
+    },
+    "root": {
+      "dag": {
+        "tasks": {
+          "create-model-input-table-node": {
+            "taskInfo": {
+              "name": "create-model-input-table-node"
+            },
+            "dependentTasks": [
+              "preprocess-companies-node",
+              "preprocess-shuttles-node"
+            ],
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-create-model-input-table-node"
+            }
+          },
+          "evaluate-model-node": {
+            "taskInfo": {
+              "name": "evaluate-model-node"
+            },
+            "dependentTasks": [
+              "split-data-node",
+              "train-model-node"
+            ],
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-evaluate-model-node"
+            }
+          },
+          "preprocess-companies-node": {
+            "taskInfo": {
+              "name": "preprocess-companies-node"
+            },
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-preprocess-companies-node"
+            }
+          },
+          "preprocess-shuttles-node": {
+            "taskInfo": {
+              "name": "preprocess-shuttles-node"
+            },
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-preprocess-shuttles-node"
+            }
+          },
+          "split-data-node": {
+            "taskInfo": {
+              "name": "split-data-node"
+            },
+            "dependentTasks": [
+              "create-model-input-table-node"
+            ],
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-split-data-node"
+            }
+          },
+          "train-model-node": {
+            "taskInfo": {
+              "name": "train-model-node"
+            },
+            "dependentTasks": [
+              "split-data-node"
+            ],
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-train-model-node"
+            }
+          }
+        }
+      }
+    }
+  },
+  "uiPipelineDeploymentConfig": {
+    "executors": {
+      "exec-create-model-input-table-node": {
+        "container": {
+          "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+          "command": [
+            "/bin/bash",
+            "-c"
+          ],
+          "args": [
+            "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"create_model_input_table_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+          ],
+          "resources": {
+            "cpuLimit": 1,
+            "memoryLimit": 2.147483648
+          }
+        }
+      },
+      "exec-evaluate-model-node": {
+        "container": {
+          "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+          "command": [
+            "/bin/bash",
+            "-c"
+          ],
+          "args": [
+            "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"evaluate_model_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+          ],
+          "resources": {
+            "cpuLimit": 1,
+            "memoryLimit": 2.147483648
+          }
+        }
+      },
+      "exec-preprocess-companies-node": {
+        "container": {
+          "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+          "command": [
+            "/bin/bash",
+            "-c"
+          ],
+          "args": [
+            "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"preprocess_companies_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+          ],
+          "resources": {
+            "cpuLimit": 1,
+            "memoryLimit": 2.147483648
+          }
+        }
+      },
+      "exec-preprocess-shuttles-node": {
+        "container": {
+          "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+          "command": [
+            "/bin/bash",
+            "-c"
+          ],
+          "args": [
+            "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"preprocess_shuttles_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+          ],
+          "resources": {
+            "cpuLimit": 1,
+            "memoryLimit": 2.147483648
+          }
+        }
+      },
+      "exec-split-data-node": {
+        "container": {
+          "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+          "command": [
+            "/bin/bash",
+            "-c"
+          ],
+          "args": [
+            "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"split_data_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+          ],
+          "resources": {
+            "cpuLimit": 1,
+            "memoryLimit": 2.147483648
+          }
+        }
+      },
+      "exec-train-model-node": {
+        "container": {
+          "image": "gcr.io/lively-crane-384007/spaceflights-tutorial-mb:latest",
+          "command": [
+            "/bin/bash",
+            "-c"
+          ],
+          "args": [
+            "kedro vertexai -e local initialize-job --params='{\"model_options\": {\"test_size\": 0.2, \"random_state\": 3, \"features\": [\"engines\", \"passenger_capacity\", \"crew\", \"d_check_complete\", \"moon_clearance_complete\", \"iata_approved\", \"company_rating\", \"review_scores_rating\"]}}' &&  KEDRO_VERTEXAI_DISABLE_CONFIG_HOOK=false KEDRO_CONFIG_RUN_ID={{$.pipeline_job_uuid}} KEDRO_CONFIG_JOB_NAME={{$.pipeline_job_name}} KEDRO_VERTEXAI_RUNNER_CONFIG='{\"storage_root\": \"demo-kedro-vertexai-spaceflights/vertexai\"}'  kedro run -e local --pipeline __default__ --node \"train_model_node\" --runner kedro_vertexai.vertex_ai.runner.VertexAIPipelinesRunner --config config.yaml"
+          ],
+          "resources": {
+            "cpuLimit": 1,
+            "memoryLimit": 2.147483648
+          }
+        }
+      }
+    }
+  },
+  "serviceAccount": "902191593306-compute@developer.gserviceaccount.com"
+}
