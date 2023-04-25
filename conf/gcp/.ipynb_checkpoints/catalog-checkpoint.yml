@@ -1,0 +1,79 @@
+# Here you can define all your data sets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
+#
+# We support interacting with a variety of data stores including local file systems, cloud, network and HDFS
+companies:
+  type: spark.SparkDataSet
+  filepath: gs://demo-kedro-spaceflights/data/01_raw/companies.csv
+  file_format: csv
+  load_args:
+    header: True
+    inferSchema: True
+  save_args:
+    header: True
+
+reviews:
+  # type: pandas.CSVDataSet
+  type: spark.SparkDataSet
+  filepath: gs://demo-kedro-spaceflights/data/01_raw/reviews.csv
+  file_format: csv
+  load_args:
+    header: True
+    inferSchema: True
+  save_args:
+    header: True
+
+shuttles:
+  # type: pandas.CSVDataSet
+  type: spark.SparkDataSet
+  filepath: gs://demo-kedro-spaceflights/data/01_raw/shuttles.csv
+  file_format: csv
+  load_args:
+    header: True
+    inferSchema: True
+  save_args:
+    header: True
+
+
+# preprocessed_companies@pyspark:
+#   type: spark.SparkDataSet
+#   filepath: data/02_intermediate/preprocessed_companies.parquet
+#   save_args:
+#     mode: overwrite
+  
+# preprocessed_companies@pandas:
+#   type: pandas.ParquetDataSet
+#   filepath: data/02_intermediate/preprocessed_companies.parquet
+
+# preprocessed_shuttles@pyspark:
+#   type: spark.SparkDataSet
+#   filepath: data/02_intermediate/preprocessed_shuttles.parquet
+#   save_args:
+#     mode: overwrite
+
+# preprocessed_shuttles@pandas:
+#   type: pandas.ParquetDataSet
+#   filepath: data/02_intermediate/preprocessed_shuttles.parquet
+
+# model_input_table:
+#   type: spark.SparkDataSet
+#   filepath: data/03_primary/model_input_table.parquet
+#   save_args:
+#     mode: overwrite
+
+model_input_table_spark:
+  type: spark.SparkDataSet
+  filepath: data/03_primary/model_input_table.parquet
+  save_args:
+    mode: overwrite
+
+model_input_table_pandas:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/model_input_table.parquet
+
+regressor:
+  type: pickle.PickleDataSet
+  filepath: gs://demo-kedro-spaceflights/data/06_models/regressor.pickle
+  versioned: true

@@ -1,0 +1,194 @@
+2023-04-25 07:50:31,698 - kedro.pipeline.node - ERROR - Node 'split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]' failed with error: 
+Expected sequence or array-like, got <class 'pyspark.sql.dataframe.DataFrame'>
+2023-04-25 07:53:52,821 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <unprintable Py4JJavaError object>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 07:53:52,949 - kedro.pipeline.node - ERROR - Node 'create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table]' failed with error: 
+org.apache does not exist in the JVM
+2023-04-25 07:55:09,247 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/pipeline/node.py", line 344, in run
+    outputs = self._run_with_list(inputs, self._inputs)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/pipeline/node.py", line 384, in _run_with_list
+    return self._func(*(inputs[item] for item in node_inputs))
+  File "/home/jupyter/GCP-Kedro-spaceflight/src/spaceflights/pipelines/data_processing/nodes.py", line 105, in create_model_input_table
+    return model_input_table.toPandas()
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py", line 140, in toPandas
+    batches = self.toDF(*tmp_column_names)._collect_as_arrow(
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py", line 358, in _collect_as_arrow
+    jsocket_auth_server.getResult()
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1321, in __call__
+    return_value = get_return_value(
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <unprintable Py4JJavaError object>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 516, in send_command
+    raise Py4JNetworkError("Answer from Java side is empty")
+py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 07:57:34,340 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py", line 140, in toPandas
+    batches = self.toDF(*tmp_column_names)._collect_as_arrow(
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py", line 358, in _collect_as_arrow
+    jsocket_auth_server.getResult()
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1321, in __call__
+    return_value = get_return_value(
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <unprintable Py4JJavaError object>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 07:57:34,355 - kedro.pipeline.node - ERROR - Node 'create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table]' failed with error: 
+An error occurred while calling None.None
+2023-04-25 09:04:27,825 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <unprintable Py4JJavaError object>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 09:04:27,978 - kedro.pipeline.node - ERROR - Node 'split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]' failed with error: 
+py4j.reflection does not exist in the JVM
+2023-04-25 09:04:28,308 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 516, in send_command
+    raise Py4JNetworkError("Answer from Java side is empty")
+py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 09:05:24,812 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <unprintable Py4JJavaError object>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 09:05:24,830 - kedro.pipeline.node - ERROR - Node 'split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]' failed with error: 
+py4j.reflection.TypeUtil does not exist in the JVM
+2023-04-25 09:13:41,188 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <unprintable Py4JJavaError object>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 09:13:41,268 - kedro.pipeline.node - ERROR - Node 'split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]' failed with error: 
+py4j does not exist in the JVM
+2023-04-25 09:18:30,392 - kedro.pipeline.node - ERROR - Node 'split_data_node: split_data([model_input_table_pandas,params:model_options]) -> [X_train,X_test,y_train,y_test]' failed with error: 
+'DataFrame' object has no attribute 'toPandas'

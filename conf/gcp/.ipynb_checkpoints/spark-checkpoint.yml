@@ -1,0 +1,9 @@
+# You can define spark specific configuration here.
+
+spark.driver.maxResultSize: 3g
+spark.hadoop.fs.gs.impl: com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem
+spark.jars: https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop3-latest.jar
+spark.sql.execution.arrow.pyspark.enabled: true
+
+# https://kedro.readthedocs.io/en/stable/tools_integration/pyspark.html#tips-for-maximising-concurrency-using-threadrunner
+spark.scheduler.mode: FAIR

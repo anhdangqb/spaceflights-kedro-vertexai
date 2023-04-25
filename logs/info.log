@@ -1,0 +1,1223 @@
+2023-04-17 08:08:23,055 - kedro.framework.session.session - INFO - Kedro project spaceflights
+2023-04-17 08:08:24,297 - kedro.io.data_catalog - INFO - Loading data from 'companies' (CSVDataSet)...
+2023-04-17 08:08:24,350 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies]
+2023-04-17 08:08:24,388 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies' (ParquetDataSet)...
+2023-04-17 08:08:24,430 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-17 08:08:24,433 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (ExcelDataSet)...
+2023-04-17 08:08:35,678 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles]
+2023-04-17 08:08:35,702 - py.warnings - WARNING - /home/jupyter/spaceflights/src/spaceflights/pipelines/data_processing/nodes.py:15: FutureWarning: The default value of regex will change from True to False in a future version. In addition, single character regular expressions will *not* be treated as literal strings when regex=True.
+  x = x.str.replace("$", "").str.replace(",", "")
+
+2023-04-17 08:08:35,763 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles' (ParquetDataSet)...
+2023-04-17 08:08:35,838 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-17 08:08:35,841 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles' (ParquetDataSet)...
+2023-04-17 08:08:35,894 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies' (ParquetDataSet)...
+2023-04-17 08:08:35,911 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (CSVDataSet)...
+2023-04-17 08:08:35,987 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles,preprocessed_companies,reviews]) -> [model_input_table]
+2023-04-17 08:08:38,844 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table' (ParquetDataSet)...
+2023-04-17 08:08:39,566 - kedro.runner.sequential_runner - INFO - Completed 3 out of 6 tasks
+2023-04-17 08:08:39,569 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table' (ParquetDataSet)...
+2023-04-17 08:08:39,899 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-17 08:08:39,903 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-17 08:08:40,025 - kedro.io.data_catalog - INFO - Saving data to 'X_train' (MemoryDataSet)...
+2023-04-17 08:08:40,034 - kedro.io.data_catalog - INFO - Saving data to 'X_test' (MemoryDataSet)...
+2023-04-17 08:08:40,038 - kedro.io.data_catalog - INFO - Saving data to 'y_train' (MemoryDataSet)...
+2023-04-17 08:08:40,042 - kedro.io.data_catalog - INFO - Saving data to 'y_test' (MemoryDataSet)...
+2023-04-17 08:08:40,057 - kedro.runner.sequential_runner - INFO - Completed 4 out of 6 tasks
+2023-04-17 08:08:40,059 - kedro.io.data_catalog - INFO - Loading data from 'X_train' (MemoryDataSet)...
+2023-04-17 08:08:40,067 - kedro.io.data_catalog - INFO - Loading data from 'y_train' (MemoryDataSet)...
+2023-04-17 08:08:40,070 - kedro.pipeline.node - INFO - Running node: train_model_node: train_model([X_train,y_train]) -> [regressor]
+2023-04-17 08:08:40,312 - kedro.io.data_catalog - INFO - Saving data to 'regressor' (PickleDataSet)...
+2023-04-17 08:08:40,330 - kedro.runner.sequential_runner - INFO - Completed 5 out of 6 tasks
+2023-04-17 08:08:40,332 - kedro.io.data_catalog - INFO - Loading data from 'regressor' (PickleDataSet)...
+2023-04-17 08:08:40,335 - kedro.io.data_catalog - INFO - Loading data from 'X_test' (MemoryDataSet)...
+2023-04-17 08:08:40,338 - kedro.io.data_catalog - INFO - Loading data from 'y_test' (MemoryDataSet)...
+2023-04-17 08:08:40,341 - kedro.pipeline.node - INFO - Running node: evaluate_model_node: evaluate_model([regressor,X_test,y_test]) -> None
+2023-04-17 08:08:40,359 - spaceflights.pipelines.data_science.nodes - INFO - Model has a coefficient R^2 of 0.462 on test data.
+2023-04-17 08:08:40,364 - kedro.runner.sequential_runner - INFO - Completed 6 out of 6 tasks
+2023-04-17 08:08:40,366 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-17 08:29:00,342 - kedro.framework.session.session - INFO - Kedro project spaceflights
+2023-04-17 08:29:02,418 - kedro.io.data_catalog - INFO - Loading data from 'companies' (CSVDataSet)...
+2023-04-17 08:29:02,718 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies]
+2023-04-17 08:29:02,793 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies' (MemoryDataSet)...
+2023-04-17 08:29:02,807 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-17 08:29:02,815 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (ExcelDataSet)...
+2023-04-17 08:29:16,474 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles]
+2023-04-17 08:29:16,496 - py.warnings - WARNING - /home/jupyter/spaceflights/src/spaceflights/pipelines/data_processing/nodes.py:15: FutureWarning: The default value of regex will change from True to False in a future version. In addition, single character regular expressions will *not* be treated as literal strings when regex=True.
+  x = x.str.replace("$", "").str.replace(",", "")
+
+2023-04-17 08:29:16,557 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles' (MemoryDataSet)...
+2023-04-17 08:29:16,568 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-17 08:29:16,570 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles' (MemoryDataSet)...
+2023-04-17 08:29:16,575 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies' (MemoryDataSet)...
+2023-04-17 08:29:16,579 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (CSVDataSet)...
+2023-04-17 08:29:16,776 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles,preprocessed_companies,reviews]) -> [model_input_table]
+2023-04-17 08:29:19,536 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table' (MemoryDataSet)...
+2023-04-17 08:29:19,621 - kedro.runner.sequential_runner - INFO - Completed 3 out of 6 tasks
+2023-04-17 08:29:19,624 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table' (MemoryDataSet)...
+2023-04-17 08:29:19,690 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-17 08:29:19,694 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-17 08:29:19,828 - kedro.io.data_catalog - INFO - Saving data to 'X_train' (MemoryDataSet)...
+2023-04-17 08:29:19,836 - kedro.io.data_catalog - INFO - Saving data to 'X_test' (MemoryDataSet)...
+2023-04-17 08:29:19,840 - kedro.io.data_catalog - INFO - Saving data to 'y_train' (MemoryDataSet)...
+2023-04-17 08:29:19,844 - kedro.io.data_catalog - INFO - Saving data to 'y_test' (MemoryDataSet)...
+2023-04-17 08:29:19,869 - kedro.runner.sequential_runner - INFO - Completed 4 out of 6 tasks
+2023-04-17 08:29:19,872 - kedro.io.data_catalog - INFO - Loading data from 'X_train' (MemoryDataSet)...
+2023-04-17 08:29:19,880 - kedro.io.data_catalog - INFO - Loading data from 'y_train' (MemoryDataSet)...
+2023-04-17 08:29:19,884 - kedro.pipeline.node - INFO - Running node: train_model_node: train_model([X_train,y_train]) -> [regressor]
+2023-04-17 08:29:20,118 - kedro.io.data_catalog - INFO - Saving data to 'regressor' (MemoryDataSet)...
+2023-04-17 08:29:20,122 - kedro.runner.sequential_runner - INFO - Completed 5 out of 6 tasks
+2023-04-17 08:29:20,124 - kedro.io.data_catalog - INFO - Loading data from 'regressor' (MemoryDataSet)...
+2023-04-17 08:29:20,126 - kedro.io.data_catalog - INFO - Loading data from 'X_test' (MemoryDataSet)...
+2023-04-17 08:29:20,130 - kedro.io.data_catalog - INFO - Loading data from 'y_test' (MemoryDataSet)...
+2023-04-17 08:29:20,133 - kedro.pipeline.node - INFO - Running node: evaluate_model_node: evaluate_model([regressor,X_test,y_test]) -> None
+2023-04-17 08:29:20,148 - spaceflights.pipelines.data_science.nodes - INFO - Model has a coefficient R^2 of 0.462 on test data.
+2023-04-17 08:29:20,154 - kedro.runner.sequential_runner - INFO - Completed 6 out of 6 tasks
+2023-04-17 08:29:20,157 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-17 08:44:16,990 - py.warnings - WARNING - /opt/conda/envs/python39/lib/python3.9/site-packages/kfp/v2/google/client/client.py:169: FutureWarning: AIPlatformClient will be deprecated in v2.0.0. Please use PipelineJob https://googleapis.dev/python/aiplatform/latest/_modules/google/cloud/aiplatform/pipeline_jobs.html in Vertex SDK. Install the SDK using "pip install google-cloud-aiplatform"
+  warnings.warn(
+
+2023-04-17 08:44:17,007 - kedro_vertexai.cli - WARNING - Make sure that you've built and pushed your image to run the latest version remotely. Consider using '--auto-build' parameter.
+2023-04-17 08:44:17,011 - py.warnings - WARNING - /opt/conda/envs/python39/lib/python3.9/site-packages/kfp/v2/compiler/compiler.py:1290: FutureWarning: APIs imported from the v1 namespace (e.g. kfp.dsl, kfp.components, etc) will not be supported by the v2 compiler since v2.0.0
+  warnings.warn(
+
+2023-04-18 04:02:16,213 - kedro.framework.session.session - INFO - Kedro project spaceflights
+2023-04-18 04:04:08,983 - kedro.framework.session.session - INFO - Kedro project spaceflights
+2023-04-18 04:04:10,660 - kedro.io.data_catalog - INFO - Loading data from 'companies' (CSVDataSet)...
+2023-04-18 04:04:10,892 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies]
+2023-04-18 04:04:10,930 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies' (MemoryDataSet)...
+2023-04-18 04:04:10,935 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-18 04:04:10,937 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (ExcelDataSet)...
+2023-04-18 04:04:23,535 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles]
+2023-04-18 04:04:23,576 - py.warnings - WARNING - /home/jupyter/spaceflights/src/spaceflights/pipelines/data_processing/nodes.py:15: FutureWarning: The default value of regex will change from True to False in a future version. In addition, single character regular expressions will *not* be treated as literal strings when regex=True.
+  x = x.str.replace("$", "").str.replace(",", "")
+
+2023-04-18 04:04:23,640 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles' (MemoryDataSet)...
+2023-04-18 04:04:23,651 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-18 04:04:23,654 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles' (MemoryDataSet)...
+2023-04-18 04:04:23,659 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies' (MemoryDataSet)...
+2023-04-18 04:04:23,662 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (CSVDataSet)...
+2023-04-18 04:04:23,862 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles,preprocessed_companies,reviews]) -> [model_input_table]
+2023-04-18 04:04:27,289 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table' (MemoryDataSet)...
+2023-04-18 04:04:27,373 - kedro.runner.sequential_runner - INFO - Completed 3 out of 6 tasks
+2023-04-18 04:04:27,376 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table' (MemoryDataSet)...
+2023-04-18 04:04:27,442 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-18 04:04:27,446 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-18 04:04:27,616 - kedro.io.data_catalog - INFO - Saving data to 'X_train' (MemoryDataSet)...
+2023-04-18 04:04:27,625 - kedro.io.data_catalog - INFO - Saving data to 'X_test' (MemoryDataSet)...
+2023-04-18 04:04:27,630 - kedro.io.data_catalog - INFO - Saving data to 'y_train' (MemoryDataSet)...
+2023-04-18 04:04:27,633 - kedro.io.data_catalog - INFO - Saving data to 'y_test' (MemoryDataSet)...
+2023-04-18 04:04:27,659 - kedro.runner.sequential_runner - INFO - Completed 4 out of 6 tasks
+2023-04-18 04:04:27,662 - kedro.io.data_catalog - INFO - Loading data from 'X_train' (MemoryDataSet)...
+2023-04-18 04:04:27,672 - kedro.io.data_catalog - INFO - Loading data from 'y_train' (MemoryDataSet)...
+2023-04-18 04:04:27,676 - kedro.pipeline.node - INFO - Running node: train_model_node: train_model([X_train,y_train]) -> [regressor]
+2023-04-18 04:04:27,969 - kedro.io.data_catalog - INFO - Saving data to 'regressor' (MemoryDataSet)...
+2023-04-18 04:04:27,973 - kedro.runner.sequential_runner - INFO - Completed 5 out of 6 tasks
+2023-04-18 04:04:27,980 - kedro.io.data_catalog - INFO - Loading data from 'regressor' (MemoryDataSet)...
+2023-04-18 04:04:27,986 - kedro.io.data_catalog - INFO - Loading data from 'X_test' (MemoryDataSet)...
+2023-04-18 04:04:27,993 - kedro.io.data_catalog - INFO - Loading data from 'y_test' (MemoryDataSet)...
+2023-04-18 04:04:27,998 - kedro.pipeline.node - INFO - Running node: evaluate_model_node: evaluate_model([regressor,X_test,y_test]) -> None
+2023-04-18 04:04:28,039 - spaceflights.pipelines.data_science.nodes - INFO - Model has a coefficient R^2 of 0.462 on test data.
+2023-04-18 04:04:28,053 - kedro.runner.sequential_runner - INFO - Completed 6 out of 6 tasks
+2023-04-18 04:04:28,061 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 06:23:50,850 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 06:23:52,771 - kedro.io.data_catalog - INFO - Loading data from 'companies' (CSVDataSet)...
+2023-04-25 06:23:53,499 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies]
+2023-04-25 06:23:53,611 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies' (MemoryDataSet)...
+2023-04-25 06:23:53,618 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-25 06:23:53,622 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (ExcelDataSet)...
+2023-04-25 06:24:10,911 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles]
+2023-04-25 06:24:10,934 - py.warnings - WARNING - /home/jupyter/GCP-Kedro-spaceflight/src/spaceflights/pipelines/data_processing/nodes.py:15: FutureWarning: The default value of regex will change from True to False in a future version. In addition, single character regular expressions will *not* be treated as literal strings when regex=True.
+  x = x.str.replace("$", "").str.replace(",", "")
+
+2023-04-25 06:24:11,000 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles' (MemoryDataSet)...
+2023-04-25 06:24:11,013 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-25 06:24:11,016 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles' (MemoryDataSet)...
+2023-04-25 06:24:11,023 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies' (MemoryDataSet)...
+2023-04-25 06:24:11,027 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (CSVDataSet)...
+2023-04-25 06:24:11,307 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles,preprocessed_companies,reviews]) -> [model_input_table]
+2023-04-25 06:24:15,143 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table' (MemoryDataSet)...
+2023-04-25 06:24:15,237 - kedro.runner.sequential_runner - INFO - Completed 3 out of 6 tasks
+2023-04-25 06:24:15,240 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table' (MemoryDataSet)...
+2023-04-25 06:24:15,321 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 06:24:15,325 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 06:24:15,505 - kedro.io.data_catalog - INFO - Saving data to 'X_train' (MemoryDataSet)...
+2023-04-25 06:24:15,515 - kedro.io.data_catalog - INFO - Saving data to 'X_test' (MemoryDataSet)...
+2023-04-25 06:24:15,520 - kedro.io.data_catalog - INFO - Saving data to 'y_train' (MemoryDataSet)...
+2023-04-25 06:24:15,527 - kedro.io.data_catalog - INFO - Saving data to 'y_test' (MemoryDataSet)...
+2023-04-25 06:24:15,554 - kedro.runner.sequential_runner - INFO - Completed 4 out of 6 tasks
+2023-04-25 06:24:15,558 - kedro.io.data_catalog - INFO - Loading data from 'X_train' (MemoryDataSet)...
+2023-04-25 06:24:15,568 - kedro.io.data_catalog - INFO - Loading data from 'y_train' (MemoryDataSet)...
+2023-04-25 06:24:15,574 - kedro.pipeline.node - INFO - Running node: train_model_node: train_model([X_train,y_train]) -> [regressor]
+2023-04-25 06:24:16,224 - kedro.io.data_catalog - INFO - Saving data to 'regressor' (MemoryDataSet)...
+2023-04-25 06:24:16,231 - kedro.runner.sequential_runner - INFO - Completed 5 out of 6 tasks
+2023-04-25 06:24:16,235 - kedro.io.data_catalog - INFO - Loading data from 'regressor' (MemoryDataSet)...
+2023-04-25 06:24:16,239 - kedro.io.data_catalog - INFO - Loading data from 'X_test' (MemoryDataSet)...
+2023-04-25 06:24:16,245 - kedro.io.data_catalog - INFO - Loading data from 'y_test' (MemoryDataSet)...
+2023-04-25 06:24:16,248 - kedro.pipeline.node - INFO - Running node: evaluate_model_node: evaluate_model([regressor,X_test,y_test]) -> None
+2023-04-25 06:24:16,284 - spaceflights.pipelines.data_science.nodes - INFO - Model has a coefficient R^2 of 0.462 on test data.
+2023-04-25 06:24:16,288 - kedro.runner.sequential_runner - INFO - Completed 6 out of 6 tasks
+2023-04-25 06:24:16,290 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 07:34:18,363 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:34:18,501 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:34:36,840 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 07:34:43,171 - kedro.runner.sequential_runner - WARNING - No nodes ran. Repeat the previous command to attempt a new run.
+2023-04-25 07:36:42,772 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:36:42,788 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:36:52,866 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 07:36:57,439 - kedro.runner.sequential_runner - WARNING - No nodes ran. Repeat the previous command to attempt a new run.
+2023-04-25 07:38:39,918 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:38:39,936 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:38:48,537 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 07:39:00,759 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 07:39:00,899 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 07:39:07,846 - kedro.runner.sequential_runner - INFO - Completed 1 out of 3 tasks
+2023-04-25 07:39:07,853 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 07:39:09,864 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 07:39:10,048 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 07:39:12,583 - kedro.runner.sequential_runner - INFO - Completed 2 out of 3 tasks
+2023-04-25 07:39:12,591 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 07:39:13,002 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 07:39:13,211 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 07:39:14,393 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table1]
+2023-04-25 07:39:14,672 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table1' (SparkDataSet)...
+2023-04-25 07:39:24,255 - kedro.runner.sequential_runner - INFO - Completed 3 out of 3 tasks
+2023-04-25 07:39:24,259 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 07:39:52,627 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:39:52,645 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:42:12,338 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:42:12,356 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:43:42,117 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:43:42,134 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:45:16,321 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:45:16,339 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:45:51,982 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:45:52,000 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:47:05,629 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:47:05,667 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:48:01,258 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:48:01,299 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:48:27,481 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:48:27,500 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:48:36,626 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 07:48:50,933 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 07:48:51,128 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 07:48:55,097 - kedro.runner.sequential_runner - INFO - Completed 1 out of 3 tasks
+2023-04-25 07:48:55,100 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 07:48:57,312 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 07:48:57,488 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 07:48:59,741 - kedro.runner.sequential_runner - INFO - Completed 2 out of 3 tasks
+2023-04-25 07:48:59,745 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 07:49:00,096 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 07:49:00,320 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 07:49:01,601 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table]
+2023-04-25 07:49:02,215 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table' (SparkDataSet)...
+2023-04-25 07:49:13,521 - kedro.runner.sequential_runner - INFO - Completed 3 out of 3 tasks
+2023-04-25 07:49:13,529 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 07:50:14,241 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:50:14,259 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:50:23,072 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table' (SparkDataSet)...
+2023-04-25 07:50:31,452 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 07:50:31,456 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 07:50:31,698 - kedro.pipeline.node - ERROR - Node 'split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]' failed with error: 
+Expected sequence or array-like, got <class 'pyspark.sql.dataframe.DataFrame'>
+2023-04-25 07:50:31,704 - kedro.runner.sequential_runner - WARNING - No nodes ran. Repeat the previous command to attempt a new run.
+2023-04-25 07:50:48,194 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:50:48,213 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:52:10,689 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:52:10,706 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:52:11,216 - py.warnings - WARNING - /home/jupyter/GCP-Kedro-spaceflight/src/spaceflights/pipelines/data_processing/nodes.py:65: DeprecationWarning: invalid escape sequence '\$'
+  F.regexp_replace(F.col('price'), '\$', ''))
+
+2023-04-25 07:52:19,355 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table' (ParquetDataSet)...
+2023-04-25 07:52:19,360 - kedro.runner.sequential_runner - WARNING - No nodes ran. Repeat the previous command to attempt a new run.
+2023-04-25 07:52:41,074 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:52:41,092 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:52:51,073 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table' (ParquetDataSet)...
+2023-04-25 07:52:53,304 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 07:52:53,308 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 07:52:53,588 - kedro.io.data_catalog - INFO - Saving data to 'X_train' (MemoryDataSet)...
+2023-04-25 07:52:53,604 - kedro.io.data_catalog - INFO - Saving data to 'X_test' (MemoryDataSet)...
+2023-04-25 07:52:53,612 - kedro.io.data_catalog - INFO - Saving data to 'y_train' (MemoryDataSet)...
+2023-04-25 07:52:53,619 - kedro.io.data_catalog - INFO - Saving data to 'y_test' (MemoryDataSet)...
+2023-04-25 07:52:53,643 - kedro.runner.sequential_runner - INFO - Completed 1 out of 3 tasks
+2023-04-25 07:52:53,646 - kedro.io.data_catalog - INFO - Loading data from 'X_train' (MemoryDataSet)...
+2023-04-25 07:52:53,658 - kedro.io.data_catalog - INFO - Loading data from 'y_train' (MemoryDataSet)...
+2023-04-25 07:52:53,664 - kedro.pipeline.node - INFO - Running node: train_model_node: train_model([X_train,y_train]) -> [regressor]
+2023-04-25 07:52:54,032 - kedro.io.data_catalog - INFO - Saving data to 'regressor' (PickleDataSet)...
+2023-04-25 07:52:54,037 - kedro.runner.sequential_runner - INFO - Completed 2 out of 3 tasks
+2023-04-25 07:52:54,040 - kedro.io.data_catalog - INFO - Loading data from 'regressor' (PickleDataSet)...
+2023-04-25 07:52:54,042 - kedro.io.data_catalog - INFO - Loading data from 'X_test' (MemoryDataSet)...
+2023-04-25 07:52:54,046 - kedro.io.data_catalog - INFO - Loading data from 'y_test' (MemoryDataSet)...
+2023-04-25 07:52:54,049 - kedro.pipeline.node - INFO - Running node: evaluate_model_node: evaluate_model([regressor,X_test,y_test]) -> None
+2023-04-25 07:52:54,081 - spaceflights.pipelines.data_science.nodes - INFO - Model has a coefficient R^2 of 0.464 on test data.
+2023-04-25 07:52:54,086 - kedro.runner.sequential_runner - INFO - Completed 3 out of 3 tasks
+2023-04-25 07:52:54,088 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 07:53:13,895 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:53:13,912 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:53:22,580 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 07:53:33,043 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 07:53:33,236 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 07:53:36,611 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-25 07:53:36,615 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 07:53:38,080 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 07:53:38,262 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 07:53:41,057 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-25 07:53:41,063 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 07:53:41,358 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 07:53:41,600 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 07:53:42,999 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table]
+2023-04-25 07:53:43,348 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/utils.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(pandas.__version__) < LooseVersion(minimum_pandas_version):
+
+2023-04-25 07:53:43,366 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/utils.py:64: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(pyarrow.__version__) < LooseVersion(minimum_pyarrow_version):
+
+2023-04-25 07:53:52,821 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <unprintable Py4JJavaError object>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 07:53:52,943 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py:201: UserWarning: toPandas attempted Arrow optimization because 'spark.sql.execution.arrow.pyspark.enabled' is set to true, but has reached the error below and can not continue. Note that 'spark.sql.execution.arrow.pyspark.fallback.enabled' does not have an effect on failures in the middle of computation.
+  org.apache does not exist in the JVM
+  warn(msg)
+
+2023-04-25 07:53:52,949 - kedro.pipeline.node - ERROR - Node 'create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table]' failed with error: 
+org.apache does not exist in the JVM
+2023-04-25 07:53:52,952 - kedro.runner.sequential_runner - WARNING - There are 4 nodes that have not run.
+You can resume the pipeline run from the nearest nodes with persisted inputs by adding the following argument to your previous command:
+  --from-nodes "create_model_input_table_node"
+2023-04-25 07:54:25,015 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:54:25,032 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:54:34,101 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 07:54:45,037 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 07:54:45,173 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 07:54:48,564 - kedro.runner.sequential_runner - INFO - Completed 1 out of 3 tasks
+2023-04-25 07:54:48,567 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 07:54:50,398 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 07:54:50,579 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 07:54:53,412 - kedro.runner.sequential_runner - INFO - Completed 2 out of 3 tasks
+2023-04-25 07:54:53,417 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 07:54:53,746 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 07:54:53,949 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 07:54:54,981 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table]
+2023-04-25 07:54:55,243 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/utils.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(pandas.__version__) < LooseVersion(minimum_pandas_version):
+
+2023-04-25 07:54:55,259 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/utils.py:64: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(pyarrow.__version__) < LooseVersion(minimum_pyarrow_version):
+
+2023-04-25 07:55:08,919 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py:201: UserWarning: toPandas attempted Arrow optimization because 'spark.sql.execution.arrow.pyspark.enabled' is set to true, but has reached the error below and can not continue. Note that 'spark.sql.execution.arrow.pyspark.fallback.enabled' does not have an effect on failures in the middle of computation.
+  An error occurred while calling o125.getResult.
+: org.apache.spark.SparkException: Exception thrown in awaitResult: 
+	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:301)
+	at org.apache.spark.security.SocketAuthServer.getResult(SocketAuthServer.scala:97)
+	at org.apache.spark.security.SocketAuthServer.getResult(SocketAuthServer.scala:93)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 12.0 failed 1 times, most recent failure: Lost task 0.0 in stage 12.0 (TID 12) (umn-1681718174.us-west1-b.c.lively-crane-384007.internal executor driver): java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.util.Arrays.copyOf(Arrays.java:3745)
+	at java.base/java.io.ByteArrayOutputStream.grow(ByteArrayOutputStream.java:120)
+	at java.base/java.io.ByteArrayOutputStream.ensureCapacity(ByteArrayOutputStream.java:95)
+	at java.base/java.io.ByteArrayOutputStream.write(ByteArrayOutputStream.java:156)
+	at org.apache.spark.util.ByteBufferOutputStream.write(ByteBufferOutputStream.scala:41)
+	at java.base/java.io.ObjectOutputStream$BlockDataOutputStream.write(ObjectOutputStream.java:1849)
+	at java.base/java.io.ObjectOutputStream.write(ObjectOutputStream.java:708)
+	at org.apache.spark.util.Utils$.writeByteBuffer(Utils.scala:244)
+	at org.apache.spark.scheduler.DirectTaskResult.$anonfun$writeExternal$1(TaskResult.scala:53)
+	at org.apache.spark.scheduler.DirectTaskResult$$Lambda$2672/0x0000000841166040.apply$mcV$sp(Unknown Source)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at org.apache.spark.util.Utils$.tryOrIOException(Utils.scala:1470)
+	at org.apache.spark.scheduler.DirectTaskResult.writeExternal(TaskResult.scala:51)
+	at java.base/java.io.ObjectOutputStream.writeExternalData(ObjectOutputStream.java:1450)
+	at java.base/java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1421)
+	at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1169)
+	at java.base/java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:345)
+	at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:46)
+	at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:115)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:657)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+Driver stacktrace:
+	at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2672)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2608)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2607)
+	at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+	at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2607)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1182)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1182)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1182)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:2860)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2802)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2791)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:952)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2228)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2323)
+	at org.apache.spark.sql.Dataset.$anonfun$collectAsArrowToPython$5(Dataset.scala:3798)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1504)
+	at org.apache.spark.sql.Dataset.$anonfun$collectAsArrowToPython$2(Dataset.scala:3802)
+	at org.apache.spark.sql.Dataset.$anonfun$collectAsArrowToPython$2$adapted(Dataset.scala:3779)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$2(Dataset.scala:3858)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:510)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$1(Dataset.scala:3856)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:109)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:169)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:95)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:779)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:64)
+	at org.apache.spark.sql.Dataset.withAction(Dataset.scala:3856)
+	at org.apache.spark.sql.Dataset.$anonfun$collectAsArrowToPython$1(Dataset.scala:3779)
+	at org.apache.spark.sql.Dataset.$anonfun$collectAsArrowToPython$1$adapted(Dataset.scala:3778)
+	at org.apache.spark.security.SocketAuthServer$.$anonfun$serveToStream$2(SocketAuthServer.scala:139)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1504)
+	at org.apache.spark.security.SocketAuthServer$.$anonfun$serveToStream$1(SocketAuthServer.scala:141)
+	at org.apache.spark.security.SocketAuthServer$.$anonfun$serveToStream$1$adapted(SocketAuthServer.scala:136)
+	at org.apache.spark.security.SocketFuncServer.handleConnection(SocketAuthServer.scala:113)
+	at org.apache.spark.security.SocketFuncServer.handleConnection(SocketAuthServer.scala:107)
+	at org.apache.spark.security.SocketAuthServer$$anon$1.$anonfun$run$4(SocketAuthServer.scala:68)
+	at scala.util.Try$.apply(Try.scala:213)
+	at org.apache.spark.security.SocketAuthServer$$anon$1.run(SocketAuthServer.scala:68)
+Caused by: java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.util.Arrays.copyOf(Arrays.java:3745)
+	at java.base/java.io.ByteArrayOutputStream.grow(ByteArrayOutputStream.java:120)
+	at java.base/java.io.ByteArrayOutputStream.ensureCapacity(ByteArrayOutputStream.java:95)
+	at java.base/java.io.ByteArrayOutputStream.write(ByteArrayOutputStream.java:156)
+	at org.apache.spark.util.ByteBufferOutputStream.write(ByteBufferOutputStream.scala:41)
+	at java.base/java.io.ObjectOutputStream$BlockDataOutputStream.write(ObjectOutputStream.java:1849)
+	at java.base/java.io.ObjectOutputStream.write(ObjectOutputStream.java:708)
+	at org.apache.spark.util.Utils$.writeByteBuffer(Utils.scala:244)
+	at org.apache.spark.scheduler.DirectTaskResult.$anonfun$writeExternal$1(TaskResult.scala:53)
+	at org.apache.spark.scheduler.DirectTaskResult$$Lambda$2672/0x0000000841166040.apply$mcV$sp(Unknown Source)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at org.apache.spark.util.Utils$.tryOrIOException(Utils.scala:1470)
+	at org.apache.spark.scheduler.DirectTaskResult.writeExternal(TaskResult.scala:51)
+	at java.base/java.io.ObjectOutputStream.writeExternalData(ObjectOutputStream.java:1450)
+	at java.base/java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1421)
+	at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1169)
+	at java.base/java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:345)
+	at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:46)
+	at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:115)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:657)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+  warn(msg)
+
+2023-04-25 07:55:09,247 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/pipeline/node.py", line 344, in run
+    outputs = self._run_with_list(inputs, self._inputs)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/pipeline/node.py", line 384, in _run_with_list
+    return self._func(*(inputs[item] for item in node_inputs))
+  File "/home/jupyter/GCP-Kedro-spaceflight/src/spaceflights/pipelines/data_processing/nodes.py", line 105, in create_model_input_table
+    return model_input_table.toPandas()
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py", line 140, in toPandas
+    batches = self.toDF(*tmp_column_names)._collect_as_arrow(
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py", line 358, in _collect_as_arrow
+    jsocket_auth_server.getResult()
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1321, in __call__
+    return_value = get_return_value(
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <unprintable Py4JJavaError object>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 516, in send_command
+    raise Py4JNetworkError("Answer from Java side is empty")
+py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 07:55:09,262 - kedro.runner.sequential_runner - WARNING - There are 1 nodes that have not run.
+You can resume the pipeline run from the nearest nodes with persisted inputs by adding the following argument to your previous command:
+  --from-nodes "create_model_input_table_node"
+2023-04-25 07:56:51,634 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:56:51,651 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:57:00,321 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 07:57:13,742 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 07:57:13,925 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 07:57:17,400 - kedro.runner.sequential_runner - INFO - Completed 1 out of 3 tasks
+2023-04-25 07:57:17,403 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 07:57:19,037 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 07:57:19,231 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 07:57:21,535 - kedro.runner.sequential_runner - INFO - Completed 2 out of 3 tasks
+2023-04-25 07:57:21,538 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 07:57:21,889 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 07:57:22,101 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 07:57:23,403 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table]
+2023-04-25 07:57:23,666 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/utils.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(pandas.__version__) < LooseVersion(minimum_pandas_version):
+
+2023-04-25 07:57:23,682 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/utils.py:64: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(pyarrow.__version__) < LooseVersion(minimum_pyarrow_version):
+
+2023-04-25 07:57:34,340 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py", line 140, in toPandas
+    batches = self.toDF(*tmp_column_names)._collect_as_arrow(
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py", line 358, in _collect_as_arrow
+    jsocket_auth_server.getResult()
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1321, in __call__
+    return_value = get_return_value(
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <unprintable Py4JJavaError object>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 07:57:34,355 - kedro.pipeline.node - ERROR - Node 'create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table]' failed with error: 
+An error occurred while calling None.None
+2023-04-25 07:57:34,359 - kedro.runner.sequential_runner - WARNING - There are 1 nodes that have not run.
+You can resume the pipeline run from the nearest nodes with persisted inputs by adding the following argument to your previous command:
+  --from-nodes "create_model_input_table_node"
+2023-04-25 07:58:09,214 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 07:58:09,232 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 07:58:18,180 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table' (ParquetDataSet)...
+2023-04-25 07:58:18,626 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 07:58:18,630 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 07:58:18,771 - kedro.io.data_catalog - INFO - Saving data to 'X_train' (MemoryDataSet)...
+2023-04-25 07:58:18,786 - kedro.io.data_catalog - INFO - Saving data to 'X_test' (MemoryDataSet)...
+2023-04-25 07:58:18,793 - kedro.io.data_catalog - INFO - Saving data to 'y_train' (MemoryDataSet)...
+2023-04-25 07:58:18,800 - kedro.io.data_catalog - INFO - Saving data to 'y_test' (MemoryDataSet)...
+2023-04-25 07:58:18,821 - kedro.runner.sequential_runner - INFO - Completed 1 out of 3 tasks
+2023-04-25 07:58:18,824 - kedro.io.data_catalog - INFO - Loading data from 'X_train' (MemoryDataSet)...
+2023-04-25 07:58:18,836 - kedro.io.data_catalog - INFO - Loading data from 'y_train' (MemoryDataSet)...
+2023-04-25 07:58:18,843 - kedro.pipeline.node - INFO - Running node: train_model_node: train_model([X_train,y_train]) -> [regressor]
+2023-04-25 07:58:19,134 - kedro.io.data_catalog - INFO - Saving data to 'regressor' (PickleDataSet)...
+2023-04-25 07:58:19,142 - kedro.runner.sequential_runner - INFO - Completed 2 out of 3 tasks
+2023-04-25 07:58:19,144 - kedro.io.data_catalog - INFO - Loading data from 'regressor' (PickleDataSet)...
+2023-04-25 07:58:19,148 - kedro.io.data_catalog - INFO - Loading data from 'X_test' (MemoryDataSet)...
+2023-04-25 07:58:19,151 - kedro.io.data_catalog - INFO - Loading data from 'y_test' (MemoryDataSet)...
+2023-04-25 07:58:19,155 - kedro.pipeline.node - INFO - Running node: evaluate_model_node: evaluate_model([regressor,X_test,y_test]) -> None
+2023-04-25 07:58:19,173 - spaceflights.pipelines.data_science.nodes - INFO - Model has a coefficient R^2 of 0.464 on test data.
+2023-04-25 07:58:19,179 - kedro.runner.sequential_runner - INFO - Completed 3 out of 3 tasks
+2023-04-25 07:58:19,181 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 08:13:37,200 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 08:13:37,353 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 08:13:41,359 - py.warnings - WARNING - /home/jupyter/GCP-Kedro-spaceflight/src/spaceflights/pipelines/data_processing/nodes.py:65: DeprecationWarning: invalid escape sequence '\$'
+  F.regexp_replace(F.col('price'), '\$', ''))
+
+2023-04-25 08:14:01,411 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table_pandas' (ParquetDataSet)...
+2023-04-25 08:14:03,378 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 08:14:03,385 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table_pandas,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 08:14:03,730 - kedro.io.data_catalog - INFO - Saving data to 'X_train' (MemoryDataSet)...
+2023-04-25 08:14:03,758 - kedro.io.data_catalog - INFO - Saving data to 'X_test' (MemoryDataSet)...
+2023-04-25 08:14:03,772 - kedro.io.data_catalog - INFO - Saving data to 'y_train' (MemoryDataSet)...
+2023-04-25 08:14:03,782 - kedro.io.data_catalog - INFO - Saving data to 'y_test' (MemoryDataSet)...
+2023-04-25 08:14:03,810 - kedro.runner.sequential_runner - INFO - Completed 1 out of 3 tasks
+2023-04-25 08:14:03,817 - kedro.io.data_catalog - INFO - Loading data from 'X_train' (MemoryDataSet)...
+2023-04-25 08:14:03,837 - kedro.io.data_catalog - INFO - Loading data from 'y_train' (MemoryDataSet)...
+2023-04-25 08:14:03,854 - kedro.pipeline.node - INFO - Running node: train_model_node: train_model([X_train,y_train]) -> [regressor]
+2023-04-25 08:14:04,584 - kedro.io.data_catalog - INFO - Saving data to 'regressor' (PickleDataSet)...
+2023-04-25 08:14:04,590 - kedro.runner.sequential_runner - INFO - Completed 2 out of 3 tasks
+2023-04-25 08:14:04,599 - kedro.io.data_catalog - INFO - Loading data from 'regressor' (PickleDataSet)...
+2023-04-25 08:14:04,604 - kedro.io.data_catalog - INFO - Loading data from 'X_test' (MemoryDataSet)...
+2023-04-25 08:14:04,610 - kedro.io.data_catalog - INFO - Loading data from 'y_test' (MemoryDataSet)...
+2023-04-25 08:14:04,617 - kedro.pipeline.node - INFO - Running node: evaluate_model_node: evaluate_model([regressor,X_test,y_test]) -> None
+2023-04-25 08:14:04,653 - spaceflights.pipelines.data_science.nodes - INFO - Model has a coefficient R^2 of 0.464 on test data.
+2023-04-25 08:14:04,662 - kedro.runner.sequential_runner - INFO - Completed 3 out of 3 tasks
+2023-04-25 08:14:04,667 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 08:14:17,568 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 08:14:17,585 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 08:14:25,437 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 08:14:37,960 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 08:14:38,108 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:14:41,956 - kedro.runner.sequential_runner - INFO - Completed 1 out of 3 tasks
+2023-04-25 08:14:41,959 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 08:14:43,328 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 08:14:43,473 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:14:45,900 - kedro.runner.sequential_runner - INFO - Completed 2 out of 3 tasks
+2023-04-25 08:14:45,906 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:14:46,278 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:14:46,481 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 08:14:47,464 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table_spark]
+2023-04-25 08:14:47,715 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table_spark' (SparkDataSet)...
+2023-04-25 08:14:55,375 - kedro.runner.sequential_runner - INFO - Completed 3 out of 3 tasks
+2023-04-25 08:14:55,380 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 08:19:16,755 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 08:19:16,773 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 08:19:24,726 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 08:19:34,309 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 08:19:34,499 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:19:37,948 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-25 08:19:37,951 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 08:19:39,589 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 08:19:39,738 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:19:41,973 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-25 08:19:41,978 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table_pandas' (ParquetDataSet)...
+2023-04-25 08:19:42,333 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 08:19:42,336 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table_pandas,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 08:19:42,460 - kedro.io.data_catalog - INFO - Saving data to 'X_train' (MemoryDataSet)...
+2023-04-25 08:19:42,473 - kedro.io.data_catalog - INFO - Saving data to 'X_test' (MemoryDataSet)...
+2023-04-25 08:19:42,480 - kedro.io.data_catalog - INFO - Saving data to 'y_train' (MemoryDataSet)...
+2023-04-25 08:19:42,485 - kedro.io.data_catalog - INFO - Saving data to 'y_test' (MemoryDataSet)...
+2023-04-25 08:19:42,499 - kedro.runner.sequential_runner - INFO - Completed 3 out of 6 tasks
+2023-04-25 08:19:42,501 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:19:42,832 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:19:43,022 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 08:19:43,909 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table_spark]
+2023-04-25 08:19:44,154 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table_spark' (SparkDataSet)...
+2023-04-25 08:19:52,022 - kedro.runner.sequential_runner - INFO - Completed 4 out of 6 tasks
+2023-04-25 08:19:52,031 - kedro.io.data_catalog - INFO - Loading data from 'X_train' (MemoryDataSet)...
+2023-04-25 08:19:52,056 - kedro.io.data_catalog - INFO - Loading data from 'y_train' (MemoryDataSet)...
+2023-04-25 08:19:52,061 - kedro.pipeline.node - INFO - Running node: train_model_node: train_model([X_train,y_train]) -> [regressor]
+2023-04-25 08:19:52,323 - kedro.io.data_catalog - INFO - Saving data to 'regressor' (PickleDataSet)...
+2023-04-25 08:19:52,329 - kedro.runner.sequential_runner - INFO - Completed 5 out of 6 tasks
+2023-04-25 08:19:52,332 - kedro.io.data_catalog - INFO - Loading data from 'regressor' (PickleDataSet)...
+2023-04-25 08:19:52,334 - kedro.io.data_catalog - INFO - Loading data from 'X_test' (MemoryDataSet)...
+2023-04-25 08:19:52,338 - kedro.io.data_catalog - INFO - Loading data from 'y_test' (MemoryDataSet)...
+2023-04-25 08:19:52,340 - kedro.pipeline.node - INFO - Running node: evaluate_model_node: evaluate_model([regressor,X_test,y_test]) -> None
+2023-04-25 08:19:52,358 - spaceflights.pipelines.data_science.nodes - INFO - Model has a coefficient R^2 of 0.464 on test data.
+2023-04-25 08:19:52,362 - kedro.runner.sequential_runner - INFO - Completed 6 out of 6 tasks
+2023-04-25 08:19:52,364 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 08:20:07,863 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 08:20:07,880 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 08:20:07,898 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 08:20:07,907 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 08:20:09,575 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: spark.driver.maxResultSize, spark.scheduler.mode, spark.sql.execution.arrow.pyspark.enabled
+2023-04-25 08:20:20,019 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 08:20:20,026 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 08:20:20,042 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 08:20:32,169 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 08:20:32,309 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:20:35,984 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-25 08:20:35,987 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 08:20:36,382 - kedro.runner.sequential_runner - WARNING - There are 5 nodes that have not run.
+You can resume the pipeline run from the nearest nodes with persisted inputs by adding the following argument to your previous command:
+  --from-nodes "create_model_input_table_node,preprocess_shuttles_node"
+2023-04-25 08:22:48,713 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 08:22:48,729 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 08:22:48,733 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 08:22:48,742 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 08:22:49,996 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: spark.driver.maxResultSize, spark.scheduler.mode, spark.sql.execution.arrow.pyspark.enabled
+2023-04-25 08:22:59,856 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 08:22:59,864 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 08:22:59,889 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 08:23:15,978 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 08:23:16,152 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:23:19,339 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-25 08:23:19,342 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 08:23:21,931 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 08:23:22,078 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:23:24,472 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-25 08:23:24,478 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table_pandas' (ParquetDataSet)...
+2023-04-25 08:23:24,843 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 08:23:24,846 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table_pandas,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 08:23:24,970 - kedro.io.data_catalog - INFO - Saving data to 'X_train' (MemoryDataSet)...
+2023-04-25 08:23:24,985 - kedro.io.data_catalog - INFO - Saving data to 'X_test' (MemoryDataSet)...
+2023-04-25 08:23:24,992 - kedro.io.data_catalog - INFO - Saving data to 'y_train' (MemoryDataSet)...
+2023-04-25 08:23:24,997 - kedro.io.data_catalog - INFO - Saving data to 'y_test' (MemoryDataSet)...
+2023-04-25 08:23:25,014 - kedro.runner.sequential_runner - INFO - Completed 3 out of 6 tasks
+2023-04-25 08:23:25,017 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:23:25,317 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:23:25,495 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 08:23:26,892 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table_spark]
+2023-04-25 08:23:27,160 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table_spark' (SparkDataSet)...
+2023-04-25 08:23:35,466 - kedro.runner.sequential_runner - INFO - Completed 4 out of 6 tasks
+2023-04-25 08:23:35,473 - kedro.io.data_catalog - INFO - Loading data from 'X_train' (MemoryDataSet)...
+2023-04-25 08:23:35,496 - kedro.io.data_catalog - INFO - Loading data from 'y_train' (MemoryDataSet)...
+2023-04-25 08:23:35,509 - kedro.pipeline.node - INFO - Running node: train_model_node: train_model([X_train,y_train]) -> [regressor]
+2023-04-25 08:23:35,775 - kedro.io.data_catalog - INFO - Saving data to 'regressor' (PickleDataSet)...
+2023-04-25 08:23:36,141 - kedro.runner.sequential_runner - INFO - Completed 5 out of 6 tasks
+2023-04-25 08:23:36,144 - kedro.io.data_catalog - INFO - Loading data from 'regressor' (PickleDataSet)...
+2023-04-25 08:23:36,187 - kedro.io.data_catalog - INFO - Loading data from 'X_test' (MemoryDataSet)...
+2023-04-25 08:23:36,191 - kedro.io.data_catalog - INFO - Loading data from 'y_test' (MemoryDataSet)...
+2023-04-25 08:23:36,193 - kedro.pipeline.node - INFO - Running node: evaluate_model_node: evaluate_model([regressor,X_test,y_test]) -> None
+2023-04-25 08:23:36,212 - spaceflights.pipelines.data_science.nodes - INFO - Model has a coefficient R^2 of 0.464 on test data.
+2023-04-25 08:23:36,217 - kedro.runner.sequential_runner - INFO - Completed 6 out of 6 tasks
+2023-04-25 08:23:36,219 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 08:37:37,394 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 08:37:37,464 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 08:37:37,469 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 08:37:37,482 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 08:37:41,777 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: spark.driver.maxResultSize, spark.scheduler.mode, spark.sql.execution.arrow.pyspark.enabled
+2023-04-25 08:38:00,314 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 08:38:00,319 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 08:38:00,333 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 08:38:15,410 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 08:38:15,578 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:38:19,276 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-25 08:38:19,279 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 08:38:21,355 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 08:38:21,501 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:38:24,273 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-25 08:38:24,278 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table_pandas' (ParquetDataSet)...
+2023-04-25 08:38:25,071 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 08:38:25,075 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table_pandas,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 08:38:25,323 - kedro.io.data_catalog - INFO - Saving data to 'X_train' (MemoryDataSet)...
+2023-04-25 08:38:25,339 - kedro.io.data_catalog - INFO - Saving data to 'X_test' (MemoryDataSet)...
+2023-04-25 08:38:25,346 - kedro.io.data_catalog - INFO - Saving data to 'y_train' (MemoryDataSet)...
+2023-04-25 08:38:25,352 - kedro.io.data_catalog - INFO - Saving data to 'y_test' (MemoryDataSet)...
+2023-04-25 08:38:25,374 - kedro.runner.sequential_runner - INFO - Completed 3 out of 6 tasks
+2023-04-25 08:38:25,376 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:38:25,709 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:38:25,932 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 08:38:27,375 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table_spark]
+2023-04-25 08:38:27,638 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table_spark' (SparkDataSet)...
+2023-04-25 08:38:35,196 - kedro.runner.sequential_runner - INFO - Completed 4 out of 6 tasks
+2023-04-25 08:38:35,203 - kedro.io.data_catalog - INFO - Loading data from 'X_train' (MemoryDataSet)...
+2023-04-25 08:38:35,250 - kedro.io.data_catalog - INFO - Loading data from 'y_train' (MemoryDataSet)...
+2023-04-25 08:38:35,264 - kedro.pipeline.node - INFO - Running node: train_model_node: train_model([X_train,y_train]) -> [regressor]
+2023-04-25 08:38:35,585 - kedro.io.data_catalog - INFO - Saving data to 'regressor' (PickleDataSet)...
+2023-04-25 08:38:35,960 - kedro.runner.sequential_runner - INFO - Completed 5 out of 6 tasks
+2023-04-25 08:38:35,963 - kedro.io.data_catalog - INFO - Loading data from 'regressor' (PickleDataSet)...
+2023-04-25 08:38:36,004 - kedro.io.data_catalog - INFO - Loading data from 'X_test' (MemoryDataSet)...
+2023-04-25 08:38:36,008 - kedro.io.data_catalog - INFO - Loading data from 'y_test' (MemoryDataSet)...
+2023-04-25 08:38:36,011 - kedro.pipeline.node - INFO - Running node: evaluate_model_node: evaluate_model([regressor,X_test,y_test]) -> None
+2023-04-25 08:38:36,029 - spaceflights.pipelines.data_science.nodes - INFO - Model has a coefficient R^2 of 0.464 on test data.
+2023-04-25 08:38:36,034 - kedro.runner.sequential_runner - INFO - Completed 6 out of 6 tasks
+2023-04-25 08:38:36,036 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 08:49:44,785 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 08:49:44,811 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, model_input_table_pandas, model_input_table_spark, regressor, reviews, shuttles
+2023-04-25 08:49:44,817 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 08:49:44,875 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 08:49:52,170 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: spark.driver.maxResultSize, spark.scheduler.mode, spark.sql.execution.arrow.pyspark.enabled
+2023-04-25 08:50:07,720 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, model_input_table_pandas, model_input_table_spark, regressor, reviews, shuttles
+2023-04-25 08:50:07,725 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 08:50:07,739 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 08:50:24,374 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 08:50:24,523 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:50:28,564 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-25 08:50:28,568 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 08:50:30,421 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 08:50:30,569 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:50:32,899 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-25 08:50:32,905 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table_pandas' (ParquetDataSet)...
+2023-04-25 08:50:33,765 - kedro.runner.sequential_runner - WARNING - There are 4 nodes that have not run.
+You can resume the pipeline run from the nearest nodes with persisted inputs by adding the following argument to your previous command:
+  --from-nodes "create_model_input_table_node"
+2023-04-25 08:51:33,190 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 08:51:33,207 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, model_input_table_pandas, model_input_table_spark, regressor, reviews, shuttles
+2023-04-25 08:51:33,212 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 08:51:33,221 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 08:51:34,492 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: spark.driver.maxResultSize, spark.scheduler.mode, spark.sql.execution.arrow.pyspark.enabled
+2023-04-25 08:51:43,947 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, model_input_table_pandas, model_input_table_spark, regressor, reviews, shuttles
+2023-04-25 08:51:43,958 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 08:51:43,977 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 08:51:55,857 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 08:51:56,009 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:52:00,096 - kedro.runner.sequential_runner - INFO - Completed 1 out of 3 tasks
+2023-04-25 08:52:00,099 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 08:52:02,645 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 08:52:03,003 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:52:07,578 - kedro.runner.sequential_runner - INFO - Completed 2 out of 3 tasks
+2023-04-25 08:52:07,583 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:52:07,990 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:52:08,241 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 08:52:09,512 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table_spark]
+2023-04-25 08:52:09,772 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table_spark' (SparkDataSet)...
+2023-04-25 08:52:21,649 - kedro.runner.sequential_runner - INFO - Completed 3 out of 3 tasks
+2023-04-25 08:52:21,658 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 08:52:34,889 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 08:52:34,907 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, model_input_table_pandas, model_input_table_spark, regressor, reviews, shuttles
+2023-04-25 08:52:34,911 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 08:52:34,921 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 08:52:36,259 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: spark.driver.maxResultSize, spark.scheduler.mode, spark.sql.execution.arrow.pyspark.enabled
+2023-04-25 08:52:46,884 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, model_input_table_pandas, model_input_table_spark, regressor, reviews, shuttles
+2023-04-25 08:52:46,893 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 08:52:46,923 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table_pandas' (ParquetDataSet)...
+2023-04-25 08:52:47,032 - kedro.runner.sequential_runner - WARNING - No nodes ran. Repeat the previous command to attempt a new run.
+2023-04-25 08:53:33,000 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 08:53:33,032 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 08:53:41,353 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 08:53:51,132 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 08:53:51,295 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:53:56,208 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-25 08:53:56,211 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 08:53:57,956 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 08:53:58,104 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:54:00,688 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-25 08:54:00,693 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table_pandas' (ParquetDataSet)...
+2023-04-25 08:54:02,127 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 08:54:02,135 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table_pandas,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 08:54:02,639 - kedro.io.data_catalog - INFO - Saving data to 'X_train' (MemoryDataSet)...
+2023-04-25 08:54:02,669 - kedro.io.data_catalog - INFO - Saving data to 'X_test' (MemoryDataSet)...
+2023-04-25 08:54:02,680 - kedro.io.data_catalog - INFO - Saving data to 'y_train' (MemoryDataSet)...
+2023-04-25 08:54:02,690 - kedro.io.data_catalog - INFO - Saving data to 'y_test' (MemoryDataSet)...
+2023-04-25 08:54:02,733 - kedro.runner.sequential_runner - INFO - Completed 3 out of 6 tasks
+2023-04-25 08:54:02,738 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 08:54:03,434 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 08:54:03,873 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 08:54:05,885 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table_spark]
+2023-04-25 08:54:06,381 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table_spark' (SparkDataSet)...
+2023-04-25 08:54:14,453 - kedro.runner.sequential_runner - INFO - Completed 4 out of 6 tasks
+2023-04-25 08:54:14,460 - kedro.io.data_catalog - INFO - Loading data from 'X_train' (MemoryDataSet)...
+2023-04-25 08:54:14,500 - kedro.io.data_catalog - INFO - Loading data from 'y_train' (MemoryDataSet)...
+2023-04-25 08:54:14,507 - kedro.pipeline.node - INFO - Running node: train_model_node: train_model([X_train,y_train]) -> [regressor]
+2023-04-25 08:54:15,280 - kedro.io.data_catalog - INFO - Saving data to 'regressor' (PickleDataSet)...
+2023-04-25 08:54:15,299 - kedro.runner.sequential_runner - INFO - Completed 5 out of 6 tasks
+2023-04-25 08:54:15,301 - kedro.io.data_catalog - INFO - Loading data from 'regressor' (PickleDataSet)...
+2023-04-25 08:54:15,338 - kedro.io.data_catalog - INFO - Loading data from 'X_test' (MemoryDataSet)...
+2023-04-25 08:54:15,342 - kedro.io.data_catalog - INFO - Loading data from 'y_test' (MemoryDataSet)...
+2023-04-25 08:54:15,345 - kedro.pipeline.node - INFO - Running node: evaluate_model_node: evaluate_model([regressor,X_test,y_test]) -> None
+2023-04-25 08:54:15,406 - spaceflights.pipelines.data_science.nodes - INFO - Model has a coefficient R^2 of 0.464 on test data.
+2023-04-25 08:54:15,411 - kedro.runner.sequential_runner - INFO - Completed 6 out of 6 tasks
+2023-04-25 08:54:15,413 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 09:03:32,081 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 09:03:32,097 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 09:03:32,101 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 09:03:32,110 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 09:03:35,507 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: spark.driver.maxResultSize, spark.scheduler.mode, spark.sql.execution.arrow.pyspark.enabled
+2023-04-25 09:03:45,039 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 09:03:45,049 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 09:03:45,070 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 09:03:57,452 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 09:03:57,606 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 09:04:02,873 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-25 09:04:02,884 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 09:04:07,460 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 09:04:07,620 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 09:04:10,446 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-25 09:04:10,452 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 09:04:10,776 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 09:04:10,980 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 09:04:12,487 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table]
+2023-04-25 09:04:12,743 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table' (SparkDataSet)...
+2023-04-25 09:04:20,418 - kedro.runner.sequential_runner - INFO - Completed 3 out of 6 tasks
+2023-04-25 09:04:20,426 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table' (SparkDataSet)...
+2023-04-25 09:04:20,623 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 09:04:20,627 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 09:04:20,684 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/utils.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(pandas.__version__) < LooseVersion(minimum_pandas_version):
+
+2023-04-25 09:04:20,693 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/utils.py:64: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(pyarrow.__version__) < LooseVersion(minimum_pyarrow_version):
+
+2023-04-25 09:04:27,825 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <unprintable Py4JJavaError object>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 09:04:27,973 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py:201: UserWarning: toPandas attempted Arrow optimization because 'spark.sql.execution.arrow.pyspark.enabled' is set to true, but has reached the error below and can not continue. Note that 'spark.sql.execution.arrow.pyspark.fallback.enabled' does not have an effect on failures in the middle of computation.
+  py4j.reflection does not exist in the JVM
+  warn(msg)
+
+2023-04-25 09:04:27,978 - kedro.pipeline.node - ERROR - Node 'split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]' failed with error: 
+py4j.reflection does not exist in the JVM
+2023-04-25 09:04:27,982 - kedro.runner.sequential_runner - WARNING - There are 3 nodes that have not run.
+You can resume the pipeline run from the nearest nodes with persisted inputs by adding the following argument to your previous command:
+  --from-nodes "create_model_input_table_node"
+2023-04-25 09:04:28,308 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 516, in send_command
+    raise Py4JNetworkError("Answer from Java side is empty")
+py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 09:04:53,517 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 09:04:53,535 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 09:04:53,539 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 09:04:53,546 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 09:04:55,584 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: spark.driver.maxResultSize, spark.scheduler.mode, spark.sql.execution.arrow.pyspark.enabled
+2023-04-25 09:05:08,616 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 09:05:08,622 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 09:05:08,638 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table' (SparkDataSet)...
+2023-04-25 09:05:15,849 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 09:05:15,852 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 09:05:15,859 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/utils.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(pandas.__version__) < LooseVersion(minimum_pandas_version):
+
+2023-04-25 09:05:15,871 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/utils.py:64: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(pyarrow.__version__) < LooseVersion(minimum_pyarrow_version):
+
+2023-04-25 09:05:24,812 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <unprintable Py4JJavaError object>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 09:05:24,825 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py:201: UserWarning: toPandas attempted Arrow optimization because 'spark.sql.execution.arrow.pyspark.enabled' is set to true, but has reached the error below and can not continue. Note that 'spark.sql.execution.arrow.pyspark.fallback.enabled' does not have an effect on failures in the middle of computation.
+  py4j.reflection.TypeUtil does not exist in the JVM
+  warn(msg)
+
+2023-04-25 09:05:24,830 - kedro.pipeline.node - ERROR - Node 'split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]' failed with error: 
+py4j.reflection.TypeUtil does not exist in the JVM
+2023-04-25 09:05:24,833 - kedro.runner.sequential_runner - WARNING - No nodes ran. Repeat the previous command to attempt a new run.
+2023-04-25 09:12:59,168 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 09:12:59,210 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 09:12:59,241 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 09:12:59,382 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 09:13:02,490 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: spark.driver.maxResultSize, spark.scheduler.mode, spark.sql.execution.arrow.pyspark.enabled
+2023-04-25 09:13:22,900 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 09:13:22,904 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 09:13:22,917 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table' (SparkDataSet)...
+2023-04-25 09:13:32,121 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 09:13:32,125 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 09:13:32,160 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/utils.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(pandas.__version__) < LooseVersion(minimum_pandas_version):
+
+2023-04-25 09:13:32,168 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/utils.py:64: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(pyarrow.__version__) < LooseVersion(minimum_pyarrow_version):
+
+2023-04-25 09:13:41,188 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <unprintable Py4JJavaError object>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/opt/conda/envs/kedro-environment/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2023-04-25 09:13:41,263 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/pyspark/sql/pandas/conversion.py:201: UserWarning: toPandas attempted Arrow optimization because 'spark.sql.execution.arrow.pyspark.enabled' is set to true, but has reached the error below and can not continue. Note that 'spark.sql.execution.arrow.pyspark.fallback.enabled' does not have an effect on failures in the middle of computation.
+  py4j does not exist in the JVM
+  warn(msg)
+
+2023-04-25 09:13:41,268 - kedro.pipeline.node - ERROR - Node 'split_data_node: split_data([model_input_table,params:model_options]) -> [X_train,X_test,y_train,y_test]' failed with error: 
+py4j does not exist in the JVM
+2023-04-25 09:13:41,270 - kedro.runner.sequential_runner - WARNING - No nodes ran. Repeat the previous command to attempt a new run.
+2023-04-25 09:14:54,302 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 09:14:54,318 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 09:14:54,322 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 09:14:54,331 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 09:14:55,581 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: spark.driver.maxResultSize, spark.scheduler.mode, spark.sql.execution.arrow.pyspark.enabled
+2023-04-25 09:15:07,119 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, regressor, reviews, shuttles
+2023-04-25 09:15:07,128 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 09:15:07,153 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 09:15:19,732 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 09:15:19,868 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 09:15:23,423 - kedro.runner.sequential_runner - INFO - Completed 1 out of 3 tasks
+2023-04-25 09:15:23,427 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 09:15:25,621 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 09:15:25,795 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 09:15:28,182 - kedro.runner.sequential_runner - INFO - Completed 2 out of 3 tasks
+2023-04-25 09:15:28,187 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 09:15:28,484 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 09:15:28,696 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 09:15:29,845 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table]
+2023-04-25 09:15:30,102 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table' (SparkDataSet)...
+2023-04-25 09:15:37,802 - kedro.runner.sequential_runner - INFO - Completed 3 out of 3 tasks
+2023-04-25 09:15:37,809 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
+2023-04-25 09:17:54,192 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 09:17:54,209 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, model_input_table_pandas, model_input_table_spark, regressor, reviews, shuttles
+2023-04-25 09:17:54,214 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 09:17:54,223 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 09:17:55,504 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: spark.driver.maxResultSize, spark.scheduler.mode, spark.sql.execution.arrow.pyspark.enabled
+2023-04-25 09:18:07,254 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, model_input_table_pandas, model_input_table_spark, regressor, reviews, shuttles
+2023-04-25 09:18:07,260 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 09:18:07,280 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 09:18:18,823 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 09:18:18,973 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 09:18:23,599 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-25 09:18:23,602 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 09:18:26,014 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 09:18:26,170 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 09:18:28,824 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-25 09:18:28,829 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table_pandas' (ParquetDataSet)...
+2023-04-25 09:18:30,385 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 09:18:30,388 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table_pandas,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 09:18:30,392 - kedro.pipeline.node - ERROR - Node 'split_data_node: split_data([model_input_table_pandas,params:model_options]) -> [X_train,X_test,y_train,y_test]' failed with error: 
+'DataFrame' object has no attribute 'toPandas'
+2023-04-25 09:18:30,397 - kedro.runner.sequential_runner - WARNING - There are 4 nodes that have not run.
+You can resume the pipeline run from the nearest nodes with persisted inputs by adding the following argument to your previous command:
+  --from-nodes "create_model_input_table_node"
+2023-04-25 09:19:10,602 - kedro.framework.session.session - INFO - Kedro project GCP-Kedro-spaceflight
+2023-04-25 09:19:10,618 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, model_input_table_pandas, model_input_table_spark, regressor, reviews, shuttles
+2023-04-25 09:19:10,623 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 09:19:10,632 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/hdfs/config.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
+  from imp import load_source
+
+2023-04-25 09:19:11,881 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: spark.driver.maxResultSize, spark.scheduler.mode, spark.sql.execution.arrow.pyspark.enabled
+2023-04-25 09:19:21,416 - kedro.config.common - INFO - Config from path '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp' will override the following existing top-level config keys: companies, model_input_table_pandas, model_input_table_spark, regressor, reviews, shuttles
+2023-04-25 09:19:21,422 - py.warnings - WARNING - /opt/conda/envs/kedro-environment/lib/python3.10/site-packages/kedro/framework/context/context.py:339: UserWarning: Credentials not found in your Kedro project config.
+No files found in ['/home/jupyter/GCP-Kedro-spaceflight/conf/base', '/home/jupyter/GCP-Kedro-spaceflight/conf/gcp'] matching the glob pattern(s): ['credentials*', 'credentials*/**', '**/credentials*']
+  warn(f"Credentials not found in your Kedro project config.\n{str(exc)}")
+
+2023-04-25 09:19:21,435 - kedro.io.data_catalog - INFO - Loading data from 'companies' (SparkDataSet)...
+2023-04-25 09:19:33,275 - kedro.pipeline.node - INFO - Running node: preprocess_companies_node: preprocess_companies([companies]) -> [preprocessed_companies@pyspark]
+2023-04-25 09:19:33,400 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 09:19:36,719 - kedro.runner.sequential_runner - INFO - Completed 1 out of 6 tasks
+2023-04-25 09:19:36,723 - kedro.io.data_catalog - INFO - Loading data from 'shuttles' (SparkDataSet)...
+2023-04-25 09:19:38,766 - kedro.pipeline.node - INFO - Running node: preprocess_shuttles_node: preprocess_shuttles([shuttles]) -> [preprocessed_shuttles@pyspark]
+2023-04-25 09:19:38,930 - kedro.io.data_catalog - INFO - Saving data to 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 09:19:41,523 - kedro.runner.sequential_runner - INFO - Completed 2 out of 6 tasks
+2023-04-25 09:19:41,529 - kedro.io.data_catalog - INFO - Loading data from 'model_input_table_pandas' (ParquetDataSet)...
+2023-04-25 09:19:42,003 - kedro.io.data_catalog - INFO - Loading data from 'params:model_options' (MemoryDataSet)...
+2023-04-25 09:19:42,006 - kedro.pipeline.node - INFO - Running node: split_data_node: split_data([model_input_table_pandas,params:model_options]) -> [X_train,X_test,y_train,y_test]
+2023-04-25 09:19:42,192 - kedro.io.data_catalog - INFO - Saving data to 'X_train' (MemoryDataSet)...
+2023-04-25 09:19:42,205 - kedro.io.data_catalog - INFO - Saving data to 'X_test' (MemoryDataSet)...
+2023-04-25 09:19:42,210 - kedro.io.data_catalog - INFO - Saving data to 'y_train' (MemoryDataSet)...
+2023-04-25 09:19:42,216 - kedro.io.data_catalog - INFO - Saving data to 'y_test' (MemoryDataSet)...
+2023-04-25 09:19:42,231 - kedro.runner.sequential_runner - INFO - Completed 3 out of 6 tasks
+2023-04-25 09:19:42,233 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_shuttles@pyspark' (SparkDataSet)...
+2023-04-25 09:19:42,529 - kedro.io.data_catalog - INFO - Loading data from 'preprocessed_companies@pyspark' (SparkDataSet)...
+2023-04-25 09:19:42,745 - kedro.io.data_catalog - INFO - Loading data from 'reviews' (SparkDataSet)...
+2023-04-25 09:19:44,179 - kedro.pipeline.node - INFO - Running node: create_model_input_table_node: create_model_input_table([preprocessed_shuttles@pyspark,preprocessed_companies@pyspark,reviews]) -> [model_input_table_spark]
+2023-04-25 09:19:44,424 - kedro.io.data_catalog - INFO - Saving data to 'model_input_table_spark' (SparkDataSet)...
+2023-04-25 09:19:53,560 - kedro.runner.sequential_runner - INFO - Completed 4 out of 6 tasks
+2023-04-25 09:19:53,566 - kedro.io.data_catalog - INFO - Loading data from 'X_train' (MemoryDataSet)...
+2023-04-25 09:19:53,593 - kedro.io.data_catalog - INFO - Loading data from 'y_train' (MemoryDataSet)...
+2023-04-25 09:19:53,603 - kedro.pipeline.node - INFO - Running node: train_model_node: train_model([X_train,y_train]) -> [regressor]
+2023-04-25 09:19:54,061 - kedro.io.data_catalog - INFO - Saving data to 'regressor' (PickleDataSet)...
+2023-04-25 09:19:54,420 - kedro.runner.sequential_runner - INFO - Completed 5 out of 6 tasks
+2023-04-25 09:19:54,423 - kedro.io.data_catalog - INFO - Loading data from 'regressor' (PickleDataSet)...
+2023-04-25 09:19:54,458 - kedro.io.data_catalog - INFO - Loading data from 'X_test' (MemoryDataSet)...
+2023-04-25 09:19:54,462 - kedro.io.data_catalog - INFO - Loading data from 'y_test' (MemoryDataSet)...
+2023-04-25 09:19:54,465 - kedro.pipeline.node - INFO - Running node: evaluate_model_node: evaluate_model([regressor,X_test,y_test]) -> None
+2023-04-25 09:19:54,481 - spaceflights.pipelines.data_science.nodes - INFO - Model has a coefficient R^2 of 0.464 on test data.
+2023-04-25 09:19:54,485 - kedro.runner.sequential_runner - INFO - Completed 6 out of 6 tasks
+2023-04-25 09:19:54,487 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.
