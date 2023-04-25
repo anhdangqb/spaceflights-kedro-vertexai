@@ -1,6 +1,10 @@
 ARG BASE_IMAGE=python:3.9-slim
 FROM $BASE_IMAGE as runtime-environment
 
+# install JVM
+RUN apt-get update && mkdir -p /usr/share/man/man1 && \
+apt-get install -y procps default-jre-headless && rm -rf /var/lib/apt/lists/*
+
 # install project requirements
 COPY src/requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache -r /tmp/requirements.txt && rm -f /tmp/requirements.txt
@@ -23,4 +27,4 @@ COPY --chown=${KEDRO_UID}:${KEDRO_GID} . .
 
 EXPOSE 8888
 
-CMD ["kedro", "run"]
+CMD ["kedro", "run", "--env", "gcp"]

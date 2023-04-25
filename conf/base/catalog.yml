@@ -4,75 +4,71 @@
 # Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
 #
 # We support interacting with a variety of data stores including local file systems, cloud, network and HDFS
-#
-# An example data set definition can look as follows:
-#
-#bikes:
-#  type: pandas.CSVDataSet
-#  filepath: "data/01_raw/bikes.csv"
-#
-#weather:
-#  type: spark.SparkDataSet
-#  filepath: s3a://your_bucket/data/01_raw/weather*
-#  file_format: csv
-#  credentials: dev_s3
-#  load_args:
-#    header: True
-#    inferSchema: True
-#  save_args:
-#    sep: '|'
-#    header: True
-#
-#scooters:
-#  type: pandas.SQLTableDataSet
-#  credentials: scooters_credentials
-#  table_name: scooters
-#  load_args:
-#    index_col: ['name']
-#    columns: ['name', 'gear']
-#  save_args:
-#    if_exists: 'replace'
-#    # if_exists: 'fail'
-#    # if_exists: 'append'
-#
-# The Data Catalog supports being able to reference the same file using two different DataSet implementations
-# (transcoding), templating and a way to reuse arguments that are frequently repeated. See more here:
-# https://kedro.readthedocs.io/en/stable/data/data_catalog.html
-
 companies:
-  type: pandas.CSVDataSet
-  filepath: gs://demo-kedro-vertexai-spaceflights/data/01_raw/companies.csv
-  # filepath: data/01_raw/companies.csv
+  # type: pandas.CSVDataSet
+  type: spark.SparkDataSet
+  filepath: data/01_raw/companies.csv
+  file_format: csv
+  load_args:
+    header: True
+    inferSchema: True
+  save_args:
+    header: True
 
 reviews:
-  type: pandas.CSVDataSet
-  filepath: gs://demo-kedro-vertexai-spaceflights/data/01_raw/reviews.csv
-  # filepath: data/01_raw/reviews.csv
+  # type: pandas.CSVDataSet
+  type: spark.SparkDataSet
+  filepath: data/01_raw/reviews.csv
+  file_format: csv
+  load_args:
+    header: True
+    inferSchema: True
+  save_args:
+    header: True
 
 shuttles:
-  type: pandas.ExcelDataSet
-  filepath: gs://demo-kedro-vertexai-spaceflights/data/01_raw/shuttles.xlsx
-  # filepath: data/01_raw/shuttles.xlsx
+  # type: pandas.CSVDataSet
+  type: spark.SparkDataSet
+  filepath: data/01_raw/shuttles.csv
+  file_format: csv
   load_args:
-    engine: openpyxl # Use modern Excel engine, it is the default since Kedro 0.18.0
+    header: True
+    inferSchema: True
+  save_args:
+    header: True
 
-# preprocessed_companies:
-#   type: pandas.ParquetDataSet
-#   filepath: gs://demo-kedro-vertexai-spaceflights/data/02_intermediate/preprocessed_companies.pq
-#   # filepath: data/02_intermediate/preprocessed_companies.pq
 
-# preprocessed_shuttles:
-#   type: pandas.ParquetDataSet
-#   filepath: gs://demo-kedro-vertexai-spaceflights/data/02_intermediate/preprocessed_shuttles.pq
-#   # filepath: data/02_intermediate/preprocessed_shuttles.pq
+preprocessed_companies@pyspark:
+  type: spark.SparkDataSet
+  filepath: data/02_intermediate/preprocessed_companies.parquet
+  save_args:
+    mode: overwrite
+  
+preprocessed_companies@pandas:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/preprocessed_companies.parquet
 
-# model_input_table:
-#   type: pandas.ParquetDataSet
-#   filepath: gs://demo-kedro-vertexai-spaceflights/data/03_primary/model_input_table.pq
-#   # filepath: data/03_primary/model_input_table.pq
+preprocessed_shuttles@pyspark:
+  type: spark.SparkDataSet
+  filepath: data/02_intermediate/preprocessed_shuttles.parquet
+  save_args:
+    mode: overwrite
 
-# regressor:
-#   type: pickle.PickleDataSet
-#   filepath: gs://demo-kedro-vertexai-spaceflights/data/06_models/regressor.pickle
-#   # filepath: data/06_models/regressor.pickle
-#   versioned: true
+preprocessed_shuttles@pandas:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/preprocessed_shuttles.parquet
+
+model_input_table_spark:
+  type: spark.SparkDataSet
+  filepath: data/03_primary/model_input_table.parquet
+  save_args:
+    mode: overwrite
+
+model_input_table_pandas:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/model_input_table.parquet
+
+regressor:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/regressor.pickle
+  versioned: true

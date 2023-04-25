@@ -24,4 +24,4 @@ results
 !notebooks/.gitkeep
 !references/.gitkeep
 !results/.gitkeep
-!data/01_raw
+!data/**/

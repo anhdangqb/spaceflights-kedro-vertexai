@@ -1,23 +1,26 @@
-import pandas as pd
+from pyspark.sql import DataFrame
+from pyspark.sql import SparkSession
+from pyspark.sql.types import DoubleType
+import pyspark.sql.functions as F
 
 
-def _is_true(x: pd.Series) -> pd.Series:
-    return x == "t"
+# def _is_true(x: pd.Series) -> pd.Series:
+#     return x == "t"
 
 
-def _parse_percentage(x: pd.Series) -> pd.Series:
-    x = x.str.replace("%", "")
-    x = x.astype(float) / 100
-    return x
+# def _parse_percentage(x: pd.Series) -> pd.Series:
+#     x = x.str.replace("%", "")
+#     x = x.astype(float) / 100
+#     return x
 
 
-def _parse_money(x: pd.Series) -> pd.Series:
-    x = x.str.replace("$", "").str.replace(",", "")
-    x = x.astype(float)
-    return x
+# def _parse_money(x: pd.Series) -> pd.Series:
+#     x = x.str.replace("$", "").str.replace(",", "")
+#     x = x.astype(float)
+#     return x
 
 
-def preprocess_companies(companies: pd.DataFrame) -> pd.DataFrame:
+def preprocess_companies(companies: DataFrame) -> DataFrame:
     """Preprocesses the data for companies.
 
     Args:
@@ -26,12 +29,20 @@ def preprocess_companies(companies: pd.DataFrame) -> pd.DataFrame:
         Preprocessed data, with `company_rating` converted to a float and
         `iata_approved` converted to boolean.
     """
-    companies["iata_approved"] = _is_true(companies["iata_approved"])
-    companies["company_rating"] = _parse_percentage(companies["company_rating"])
-    return companies
+    results = (
+        companies
+        .withColumn('iata_approved', 
+                    F.when(F.col('iata_approved') == 't', True)
+                    .otherwise(False))
+        .withColumn('company_rating',
+                    F.regexp_replace(F.col('company_rating'), '%', '')
+                    .cast("double") / 100
+                   )
+    )
+    return results
 
 
-def preprocess_shuttles(shuttles: pd.DataFrame) -> pd.DataFrame:
+def preprocess_shuttles(shuttles: DataFrame) -> DataFrame:
     """Preprocesses the data for shuttles.
 
     Args:
@@ -40,15 +51,29 @@ def preprocess_shuttles(shuttles: pd.DataFrame) -> pd.DataFrame:
         Preprocessed data, with `price` converted to a float and `d_check_complete`,
         `moon_clearance_complete` converted to boolean.
     """
-    shuttles["d_check_complete"] = _is_true(shuttles["d_check_complete"])
-    shuttles["moon_clearance_complete"] = _is_true(shuttles["moon_clearance_complete"])
-    shuttles["price"] = _parse_money(shuttles["price"])
-    return shuttles
+    results = (
+        shuttles
+        .withColumn('d_check_complete', 
+                    F.when(F.col('d_check_complete') == 't', True)
+                    .otherwise(False)
+                   )
+        .withColumn('moon_clearance_complete',
+                    F.when(F.col('moon_clearance_complete') == 't', True)
+                    .otherwise(False)
+                   )
+        .withColumn('price',
+                    F.regexp_replace(F.col('price'), '\$', ''))
+        .withColumn('price',
+                    F.regexp_replace(F.col('price'), ',', '')
+                    .cast('double')
+                   )
+    )
+    return results
 
 
 def create_model_input_table(
-    shuttles: pd.DataFrame, companies: pd.DataFrame, reviews: pd.DataFrame
-) -> pd.DataFrame:
+    shuttles: DataFrame, companies: DataFrame, reviews: DataFrame
+) -> DataFrame:
     """Combines all data to create a model input table.
 
     Args:
@@ -59,9 +84,22 @@ def create_model_input_table(
         Model input table.
 
     """
-    rated_shuttles = shuttles.merge(reviews, left_on="id", right_on="shuttle_id")
-    model_input_table = rated_shuttles.merge(
-        companies, left_on="company_id", right_on="id"
+    rated_shuttles = (
+        shuttles
+        .join(
+            reviews, 
+            shuttles.id == reviews.shuttle_id
+        )
+        .drop('id')
     )
-    model_input_table = model_input_table.dropna()
+        
+    model_input_table = (
+        rated_shuttles
+        .join(
+            companies,
+            rated_shuttles.company_id == companies.id
+        )
+        .drop('id')
+        .dropna()
+    )
     return model_input_table
